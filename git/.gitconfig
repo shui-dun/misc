@@ -8,5 +8,5 @@
 	quotepath = false
 [gui]
 	encoding = utf-8
-[http]
-	proxy = http://127.0.0.1:1081
+#[http]
+#	proxy = http://127.0.0.1:1081
