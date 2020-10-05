@@ -3856,3 +3856,5 @@ zrclocal
 # Local variables:
 # mode: sh
 # End:
+
+setopt no_nomatch
