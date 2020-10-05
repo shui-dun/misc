@@ -1,0 +1,67 @@
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+  "profiles": {
+    "defaults": {
+      // Put settings here that you want to apply to all profiles
+      "black": "#0f0f14",
+      "red": "#8c4351",
+      "green": "#33635c",
+      "yellow": "#8f5e15",
+      "blue": "#34548a",
+      "purple": "#5a4a78",
+      "cyan": "#0f4b6e",
+      "white": "#828594",
+      "brightBlack": "#0f0f14",
+      "brightRed": "#8c4351",
+      "brightGreen": "#33635c",
+      "brightYellow": "#8f5e15",
+      "brightBlue": "#34548a",
+      "brightPurple": "#5a4a78",
+      "brightCyan": "#0f4b6e",
+      "brightWhite": "#828594",
+      "background": "#cbccd1",
+      "foreground": "#4c505e",
+      "fontSize": 13,
+      "fontFace": "DejaVu Sans Mono",
+      "cursorShape": "filledBox",
+      "cursorColor": "#ffffff",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.9,
+	  "startingDirectory": "./"
+    },
+    "list": [
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "Windows PowerShell",
+        "commandline": "powershell.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "name": "cmd",
+        "commandline": "cmd.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": true,
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
+      },
+      {
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "hidden": false,
+        "name": "Ubuntu",
+        "source": "Windows.Terminal.Wsl"
+      }
+    ]
+  },
+  // Add custom color schemes to this array
+  "schemes": [],
+  // Add any keybinding overrides to this array.
+  // To unbind a default keybinding, set the command to "unbound"
+  "keybindings": []
+}

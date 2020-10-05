@@ -1,0 +1,56 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clang build active file",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-std=c11",
+                "-Wall",
+                "-Wextra",
+                "-ggdb",
+                "-lm",
+                "*.c",
+                "-o",
+                "main"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "clang build active file with Ofast",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-std=c11",
+                "-Wall",
+                "-Wextra",
+                "-Ofast",
+                "-ggdb",
+                "-lm",
+                "*.c",
+                "-o",
+                "main"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}

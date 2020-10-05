@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.m": "matlab",
+        "iostream": "cpp",
+        "ds.h": "c"
+    },
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format"
+}
