@@ -1,6 +1,3 @@
-[user]
-	name = shui-dun
-	email = 2604697844@qq.com
 [i18n]
 	commitencoding = utf-8
 	logoutputencoding = utf-8
@@ -8,5 +5,5 @@
 	quotepath = false
 [gui]
 	encoding = utf-8
-#[http]
-#	proxy = http://127.0.0.1:1081
+[credential]
+	helper = store
