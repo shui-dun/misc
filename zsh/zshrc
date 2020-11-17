@@ -3858,3 +3858,4 @@ zrclocal
 # End:
 
 setopt no_nomatch
+alias rm='echo "Please use trash-cli instead."; false'
