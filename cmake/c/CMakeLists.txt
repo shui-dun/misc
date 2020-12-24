@@ -18,7 +18,3 @@ if (MINGW OR UNIX)
 elseif (MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGS")
 endif ()
-
-find_package(PNG REQUIRED)
-include_directories(${PNG_INCLUDE_DIR})
-target_link_libraries(main ${PNG_LIBRARY})
