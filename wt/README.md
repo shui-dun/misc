@@ -1,1 +1,0 @@
-windows terminal的浅色高对比度主题
