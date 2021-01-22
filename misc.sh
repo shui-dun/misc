@@ -3,6 +3,7 @@
 if echo $@ | grep -wq zsh ; then
 	echo '************************开始配置zsh************************'
 	apt install zsh
+	chsh -s /bin/zsh
 	if [ -d /etc/zsh/ ]; then
 		cp ./zsh/zshrc /etc/zsh/zshrc
 	else
