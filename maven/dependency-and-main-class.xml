@@ -15,8 +15,17 @@
             <id>make-assembly</id>
             <phase>package</phase>
             <goals>
-                <goal>assembly</goal>
+                <goal>single</goal>
             </goals>
         </execution>
     </executions>
 </plugin>
+<!-- 对于spring boot，使用下面的 -->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>

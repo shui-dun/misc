@@ -3857,5 +3857,12 @@ zrclocal
 # mode: sh
 # End:
 
+# export hm=/mnt/c/Users/26046/
+# export fl=/mnt/d/file
+# export dt=/mnt/c/Users/26046/Desktop
+# 
+# alias pes='powershell.exe'
+# alias ep='explorer.exe .'
+
 setopt no_nomatch
 alias rm='echo "Please use trash-cli instead."; false'
