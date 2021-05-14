@@ -1,6 +1,0 @@
-trash-cli
-vim
-tree
-net-tools
-zsh
-
