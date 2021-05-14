@@ -1,0 +1,9 @@
+###############################
+##### HAS_BEEN_MODIFIED #######
+###############################
+Port 1773 
+PermitRootLogin yes 
+PasswordAuthentication yes 
+###############################
+
+
