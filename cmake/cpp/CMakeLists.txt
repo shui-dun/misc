@@ -15,7 +15,6 @@ endif ()
 if (MINGW OR UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG")
 endif ()
 if (MSVC)
     # 下面两句保证msvc正常链接dll，**必须放在链接dll之前**
