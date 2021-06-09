@@ -2,10 +2,30 @@ mixin:
   dns:
     enable: true
     listen: 0.0.0.0:53
+    # default-nameserver: 也就是 bootstrap DNS，這裡的 ns 只有一個用途，就是解析 nameserver 裡面用到的域名，只能填寫 IP。
     default-nameserver:
       - 156.154.70.1
       - 1.0.0.1
+    # nameserver: 每當 Clash 收到一個域名，會對 nameserver 和 fallback 中的服務器並行發出請求，若 GEOIP 為 CN 的，採用 nameserver 裡面的結果。
+    nameserver:
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    # fallback: 每當 Clash 收到一個域名，會對 nameserver 和 fallback 中的服務器並行發出請求，若 GEOIP 為 CN 以外的，採用 fallback 裡面的結果。
+    # 實際上走代理的域名會使用遠程解析的結果。Fallback 查詢失效會影響的是「GEOIP 結果為國外的直連規則」
+    # 设置fallback会减慢dns解析速度
+    # fallback:
+    #   - tls://one.one.one.one:853
+    #   - tls://dns.google:853
+    #   - https://dns.twnic.tw/dns-query
     ipv6: false
+    # fake ip
+    # 操作系统发出的 DNS 解析请求会经过代理客户端并最终被截获
+    # 代理客户端从解析请求中获得域名，从 Fake IP 池中选取一个 IP 建立映射
+    # 代理客户端将这个 Fake IP 返回回去，操作系统拿到了这个 Fake IP 并返回给浏览器
+    # 浏览器对 Fake IP 建立一个 TCP 连接并发送出去
+    # 这个 TCP 连接被代理客户端截获。代理客户端抽取出 Fake IP 并反查出这个 TCP 连接中对应的域名
+    # 有了 TCP 连接和域名，代理客户端可以轻易地将其使用 SOSCKS5 或者 某种协议 进行封装
+    # 有了 Fake IP，代理客户端无需进行 DNS 解析。
     enhanced-mode: fake-ip
     fake-ip-range: 198.10.0.1/16
     fake-ip-filter:
@@ -79,7 +99,3 @@ mixin:
       - xbox.*.*.microsoft.com
       - "*.ipv6.microsoft.com"
       - "*.*.xboxlive.com"
-    nameserver:
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
-
