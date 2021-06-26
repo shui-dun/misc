@@ -18,5 +18,3 @@
 ::/ls::\left(\right{Left 6}
 ::/lm::\left[\right{Left 6}
 ::/lb::\left\{{}\right\{Left 7}
-::/lf::\frac{{}{}}{{}{}}{Left 3}
-::/la::\Leftrightarrow
