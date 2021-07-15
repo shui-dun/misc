@@ -10,9 +10,6 @@
 +^Up::Send +{PgUp}
 +^Down::Send +{PgDn}
 
-+^!Up::Send !+{PgUp}
-+^!Down::Send !+{PgDn}
-
 ; latex
 
 ::/mat::\begin{{}bmatrix{}}`n\end{{}bmatrix{}}{Up}{End}
