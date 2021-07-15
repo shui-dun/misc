@@ -2,7 +2,7 @@ mixin:
   dns:
     enable: true
     listen: 0.0.0.0:53
-    # default-nameserver: 也就是 bootstrap DNS，這裡的 ns 只有一個用途，就是解析 nameserver 裡面用到的域名，只能填寫 IP。
+    # default-nameserver:  也就是 bootstrap DNS，這裡的 ns 只有一個用途，就是解析 nameserver 裡面用到的域名，只能填寫 IP。
     default-nameserver:
       - 156.154.70.1
       - 1.0.0.1
