@@ -16,9 +16,10 @@
 ::/arr::\begin{{}array{}}{{}ccc{}}`n\end{{}array{}}{Up}{End}
 ::/ali::\begin{{}aligned{}}`n\end{{}aligned{}}{Up}{End}
 
-::/s::\left(\right){Left 7}
-::/m::\left[\right]{Left 7}
-::/b::\left\{{}\right\{}}{Left 8}
+::/>::\left<\right>{Left 7}
+::/)::\left(\right){Left 7}
+::/]::\left[\right]{Left 7}
+::/}::\left\{{}\right\{}}{Left 8}
 
 ::/bs::\boldsymbol{{}{}}{Left}
 ::/tt::\text{{}{}}{Left}
