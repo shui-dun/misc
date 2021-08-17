@@ -12,7 +12,7 @@
 
 ; latex
 
-#IfWinActive ahk_exe Typora.exe
+#If WinActive("ahk_exe Typora.exe") || WinActive("ahk_exe Obsidian.exe")
 
 ::/mat::\begin{{}bmatrix{}}`n\end{{}bmatrix{}}{Up}{End}
 ::/arr::\begin{{}array{}}{{}ccc{}}`n\end{{}array{}}{Up}{End}
@@ -33,4 +33,4 @@
 :*:/bf::\mathbf{{}{}}{Left}
 :*:/cal::\mathcal{{}{}}{Left}
 
-#IfWinActive
+#If
