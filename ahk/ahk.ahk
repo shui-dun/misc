@@ -10,7 +10,7 @@
 +^Up::Send +{PgUp}
 +^Down::Send +{PgDn}
 
-; latex
+; markdown/latex
 
 #If WinActive("ahk_exe Typora.exe") || WinActive("ahk_exe Obsidian.exe")
 
@@ -32,5 +32,7 @@
 :*:/frak::\mathfrak{{}{}}{Left}
 :*:/bf::\mathbf{{}{}}{Left}
 :*:/cal::\mathcal{{}{}}{Left}
+
+:*:/cite::<p align="right">——</p>{Left 4}
 
 #If
