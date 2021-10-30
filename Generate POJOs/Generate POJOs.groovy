@@ -45,8 +45,8 @@ def generate(out, className, fields) {
   fields.each() {
     if (it.annos != "") out.println "  ${it.annos}"
     out.println "    private ${it.type} ${it.name};"
+    out.println ""
   }
-  out.println ""
   out.println "}"
 }
 
