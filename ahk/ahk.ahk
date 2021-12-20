@@ -33,6 +33,8 @@
 :*:/bf::\mathbf{{}{}}{Left}
 :*:/cal::\mathcal{{}{}}{Left}
 
+^m::Send {space}$${space}{Left 2}
+
 :*:/cite::<p align="right">——</p>{Left 4}
 
 #If
