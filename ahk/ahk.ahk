@@ -1,9 +1,3 @@
-; info
-
-:*:/phone::13487929926
-:*:/foxmail::huang_xiaoke@foxmail.com
-:*:/gmail::huang.xiaoke.dev@gmail.com
-
 ; direction
 
 ^Left::Send {Home}
