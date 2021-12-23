@@ -33,8 +33,23 @@
 :*:/bf::\mathbf{{}{}}{Left}
 :*:/cal::\mathcal{{}{}}{Left}
 
-^m::Send {space}$${space}{Left 2}
-
 :*:/cite::<p align="right">——</p>{Left 4}
 
+#z::QuoteSelection() 
+ 
+QuoteSelection()
+{
+	Clipboard:= ""  ; Clear clipboard for ClipWait to function.
+	Send ^c  ; Send Ctrl+C to get selection on clipboard.
+	ClipWait  $%timeoutSeconds%$  ; Wait for the copied text to arrive at the clipboard.
+	Clipboard = %Clipboard% ; strip blank character
+	Clipboard := " $" . Clipboard  . "$ " ; quote
+	Send ^v ; paste
+}
+
 #If
+
+!x::
+	Send ^c
+	Send !l
+Return
