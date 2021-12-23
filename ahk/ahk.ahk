@@ -51,5 +51,7 @@ QuoteSelection()
 
 !x::
 	Send ^c
+	ClipWait  $%timeoutSeconds%$ 
+	Clipboard := StrReplace(StrReplace(Clipboard, "-`r`n", ""), "`r`n", " ")
 	Send !l
 Return
