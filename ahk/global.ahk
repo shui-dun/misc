@@ -1,5 +1,3 @@
-#NoTrayIcon
-
 ; 方向
 
 ^Left::Send {Home}
@@ -20,5 +18,9 @@
 	ClipWait  1
 	Clipboard := StrReplace(StrReplace(Clipboard, "-`r`n", ""), "`r`n", " ")
 	Send !l
+	Sleep, 600
+	If (WinExist("沙拉查词") || WinExist("Saladict")) {
+		WinActivate
+	}
 Return
 
