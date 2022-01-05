@@ -34,9 +34,9 @@ Return
 ^6::title(6)
 
 title(times) {
-	;Clipboard := ""
+	backup := Clipboard
+	Clipboard := ""
 	Send {Home}+{End}^c
-	;ClipWait  0.05
 	Clipboard := LTrim(Clipboard, OmitChars := " #")
 	if (%times% != 0) {
 		Clipboard := " " . Clipboard
@@ -45,6 +45,7 @@ title(times) {
 		}
 	}
 	Send ^v
+	Clipboard := backup
 }
 
 ; 补全公式块
