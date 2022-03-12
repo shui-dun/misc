@@ -3857,12 +3857,18 @@ zrclocal
 # mode: sh
 # End:
 
-# export hm=/mnt/c/Users/26046/
-# export fl=/mnt/d/file
-# export dt=/mnt/c/Users/26046/Desktop
+### WSL CONFIG #####################
+# alias cmd='cmd.exe /c'
+# alias gsudo='gsudo.exe'
+# alias explorer='explorer.exe .'
 # 
-# alias pes='powershell.exe'
-# alias ep='explorer.exe .'
+# export dt=$(wslpath $(cmd echo %USERPROFILE%\\Desktop)|tr -d '\n\r')
+# export fl=/mnt/d/file
+# 
+# export http_proxy=127.0.0.1:1081
+# export https_proxy=127.0.0.1:1081
+### END OF WSL CONFIG ##############
 
 setopt no_nomatch
 alias rm='echo "Please use trash-cli instead."; false'
+
