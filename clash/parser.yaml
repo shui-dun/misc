@@ -1,6 +1,0 @@
-parsers:
-  - reg: ".+"
-    yaml:
-      prepend-rules:
-        - DOMAIN-SUFFIX,qq.com,DIRECT
-        - DOMAIN-SUFFIX,yhdm.so,DIRECT
