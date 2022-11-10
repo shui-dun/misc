@@ -85,6 +85,24 @@
       </if>
     </choose>
   </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <group delimiter=" ">
+          <date variable="original-date" form="text" date-parts="year" prefix="(" suffix=")"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else-if variable="status">
+        <text variable="status" text-case="capitalize-first"/>
+      </else-if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
   <macro name="issued">
     <choose>
       <if type="article-journal report" match="any">
@@ -325,7 +343,8 @@
             <text variable="container-title" font-style="italic" form="short"/>
             <text macro="locators"/>
             <text macro="page"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
             <text macro="status"/>
           </group>
           <!-- <choose> -->
@@ -342,7 +361,8 @@
           <group delimiter=", " suffix=".">
             <text macro="title"/>
             <text macro="event"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
             <text macro="locators"/>
             <text macro="page"/>
             <text macro="status"/>
@@ -357,7 +377,8 @@
               <text variable="genre"/>
               <text variable="number"/>
             </group>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -366,7 +387,8 @@
             <text macro="title"/>
             <text variable="genre"/>
             <text macro="publisher"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -374,7 +396,8 @@
           <group delimiter=", " suffix=".">
             <text macro="title"/>
             <text variable="container-title" font-style="italic"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -382,7 +405,8 @@
           <group delimiter=", ">
             <text macro="title"/>
             <text variable="number"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -391,7 +415,8 @@
           <text macro="geographic-location" suffix=". "/>
           <group delimiter=", " suffix=".">
             <text macro="title"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -403,7 +428,8 @@
           </group>
           <group delimiter=", " suffix=".">
             <text macro="publisher"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
             <text macro="page"/>
           </group>
           <!-- <text macro="access"/> -->
@@ -415,7 +441,8 @@
             <text macro="locators"/>
             <text macro="publisher"/>
             <text macro="page"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else-if>
@@ -431,7 +458,8 @@
           <text macro="editor" suffix=" "/>
           <group delimiter=", " suffix=".">
             <text macro="publisher"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
             <text macro="page"/>
           </group>
           <!-- <text macro="access"/> -->
@@ -445,7 +473,8 @@
           <group delimiter=", " suffix=".">
             <text macro="publisher"/>
             <text macro="page"/>
-            <text macro="issued"/>
+            <!-- <text macro="issued"/> -->
+			<text macro="date"/>
           </group>
           <!-- <text macro="access"/> -->
         </else>
