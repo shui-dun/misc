@@ -1,2 +1,28 @@
-set nu
-set ts=4 sw=4
+" 显示行号
+set number
+" 每行的缩进值和上一行相等
+set autoindent
+" 按F12切换粘贴模式
+set pastetoggle=<F12>
+" tab显示出来是多少个空格的长度
+set tabstop=4
+" 按tab时缩进的长度
+set shiftwidth=4
+" 按照文件中其他地方的缩进空格个数来确定一个tab是多少个空格
+set smarttab
+" 按退格键的时候退回缩进的长度
+set softtabstop=4
+" 缩进用空格来表示
+set expandtab
+" 在行首输入tab自动转换为4个空格，否则直接输出一个tab
+function! SmartTab()
+    let line = getline('.')
+    if line =~ '^[ \t]*$'
+        return "\<Space>\<Space>\<Space>\<Space>"
+    else
+        return "\<C-v>\<Tab>"
+    endif
+endfunction
+
+inoremap <expr> <Tab> SmartTab()
+
