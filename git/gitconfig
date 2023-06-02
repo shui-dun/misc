@@ -6,6 +6,7 @@
 	logoutputencoding = utf-8
 [core]
 	quotepath = false
+	autocrlf = true
 [gui]
 	encoding = utf-8
 [credential]
