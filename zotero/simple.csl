@@ -455,7 +455,7 @@
             </group>
             <text macro="locators"/>
           </group>
-          <text macro="editor" suffix=" "/>
+          <!-- <text macro="editor" suffix=" "/> -->
           <group delimiter=", " suffix=".">
             <text macro="publisher"/>
             <!-- <text macro="issued"/> -->
