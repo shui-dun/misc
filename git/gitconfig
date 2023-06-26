@@ -7,6 +7,7 @@
 [core]
 	quotepath = false
 	autocrlf = true
+	ignorecase = false
 [gui]
 	encoding = utf-8
 [credential]
