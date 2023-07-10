@@ -2,7 +2,6 @@ import com.intellij.database.util.Case
 import com.intellij.database.util.DasUtil
 
 // Change your package destination here
-packageName = "com.shuidun.sandbox_town_backend.bean"
 
 typeMapping = [
         (~/(?i)int/)                      : "Integer",
@@ -31,10 +30,12 @@ FILES.chooseDirectoryAndSave("Choose directory", "Choose where to store generate
 def generate(table, dir) {
     def className = javaName(table.getName(), true)
     def fields = calcFields(table)
-    new File(dir, className + "Do.java").withPrintWriter { out -> generate(out, className, fields, table) }
+    // 自动检测包名，兼容不同的操作系统的路径分隔符
+    def packageName = dir.getPath().replaceAll("\\\\", "/").replaceAll(".*src/main/java/", "").replaceAll("/", ".")
+    new File(dir, className + "Do.java").withPrintWriter { out -> generate(out, className, fields, table, packageName) }
 }
 
-def generate(out, className, fields, table) {
+def generate(out, className, fields, table, packageName) {
     out.println "package ${packageName};"
     out.println ""
     // out.println "import javax.persistence.Column;"
