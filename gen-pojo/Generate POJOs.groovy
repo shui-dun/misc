@@ -31,11 +31,11 @@ FILES.chooseDirectoryAndSave("Choose directory", "Choose where to store generate
 def generate(table, dir) {
     def className = javaName(table.getName(), true)
     def fields = calcFields(table)
-    new File(dir, className + ".java").withPrintWriter { out -> generate(out, className, fields, table) }
+    new File(dir, className + "Do.java").withPrintWriter { out -> generate(out, className, fields, table) }
 }
 
 def generate(out, className, fields, table) {
-    out.println "package $packageName ;"
+    out.println "package ${packageName};"
     out.println ""
     // out.println "import javax.persistence.Column;"
     // out.println "import javax.persistence.Entity;"
@@ -57,7 +57,7 @@ def generate(out, className, fields, table) {
     // out.println "@Builder"
     out.println "@AllArgsConstructor"
     out.println "@NoArgsConstructor"
-    out.println "public class $className {"
+    out.println "public class ${className}Do {"
     fields.each() {
         out.println ""
 
