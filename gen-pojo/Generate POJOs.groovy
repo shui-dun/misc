@@ -1,8 +1,6 @@
 import com.intellij.database.util.Case
 import com.intellij.database.util.DasUtil
 
-// Change your package destination here
-
 typeMapping = [
         (~/(?i)int/)                      : "Integer",
         (~/(?i)long/)                     : "String",
