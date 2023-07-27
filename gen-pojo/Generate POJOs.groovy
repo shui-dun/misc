@@ -2,8 +2,9 @@ import com.intellij.database.util.Case
 import com.intellij.database.util.DasUtil
 
 typeMapping = [
+        // 对bigint的匹配应该放在对int的匹配上面，否则会先匹配到int
+        (~/(?i)long|bigint/)              : "Long",
         (~/(?i)int/)                      : "Integer",
-        (~/(?i)long/)                     : "String",
         (~/(?i)number/)                   : "String",
         (~/(?i)float|double|decimal|real/): "Double",
         (~/(?i)datetime|timestamp/)       : "java.util.Date",
