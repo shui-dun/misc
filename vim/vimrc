@@ -26,3 +26,11 @@ endfunction
 
 inoremap <expr> <Tab> SmartTab()
 
+call plug#begin()
+Plug 'github/copilot.vim'
+call plug#end()
+
+" copilot补全所有文件类型
+let g:copilot_filetypes = {
+\ '*': v:true,
+\ }
