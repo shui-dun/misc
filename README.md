@@ -7,13 +7,15 @@
 ## 配置单个软件
 
 ```sh
-sh 软件名/install.sh
+bash 软件名/install.sh 2> >(tee -a error.log)
 ```
+
+其中，`>(tee -a error.log)` 是一个进程替代，它将stderr (`2>`)的内容传递给tee命令。tee命令将stderr的内容写入error.log文件并同时输出到控制台。
 
 ## 配置所有软件
 
 ```sh
-sh config.sh
+bash config.sh 2> >(tee -a error.log)
 ```
 
 ## 注意
