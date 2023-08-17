@@ -3967,4 +3967,4 @@ unfunction grml_status_feature
 
 setopt no_nomatch
 alias rm='echo "Please use trash-cli instead."; false'
-export TERM=xterm-256color
+# export TERM=xterm-256color

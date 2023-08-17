@@ -32,7 +32,7 @@ set cpt=.,k,w,b
 call plug#begin()
 Plug 'github/copilot.vim'
 Plug 'skywind3000/vim-dict'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " copilot补全所有文件类型
@@ -41,5 +41,5 @@ let g:copilot_filetypes = {
 \ }
 
 " lightline配置
-set laststatus=2
-set noshowmode
+" set laststatus=2
+" set noshowmode
