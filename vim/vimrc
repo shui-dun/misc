@@ -25,6 +25,10 @@ function! SmartTab()
 endfunction
 
 inoremap <expr> <Tab> SmartTab()
+" 可视化 tab
+set list
+" set listchars=tab:▸\ ,
+set listchars=tab:>-
 " 设置补全(ctrl+p)时应该查找哪些类型的候选项，以及如何排序
 set cpt=.,k,w,b
 
