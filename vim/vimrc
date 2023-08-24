@@ -43,6 +43,8 @@ Plug 'skywind3000/vim-dict'
 " 模糊查找
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+" 目录树
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " copilot补全所有文件类型
