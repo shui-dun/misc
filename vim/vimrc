@@ -31,6 +31,10 @@ set list
 set listchars=tab:>-
 " 设置补全(ctrl+p)时应该查找哪些类型的候选项，以及如何排序
 set cpt=.,k,w,b
+" vim的自带目录工具netrw默认使用树视图
+let g:netrw_liststyle=3
+" 隐藏netrw的帮助信息
+let g:netrw_banner=0
 
 " 插件管理
 call plug#begin()
