@@ -3965,6 +3965,15 @@ unfunction grml_status_feature
 # export fl=/mnt/d/file
 ### END OF WSL CONFIG ##############
 
+# 取消alias ag="apt upgrade"，因为我们安装了silversearcher-ag
+unalias ag
+# 为了与bash兼容
 setopt no_nomatch
+# 禁用rm，使用trash-cli代替
 alias rm='echo "Please use trash-cli instead."; false'
+# 终端支持256色
 # export TERM=xterm-256color
+# 快速进入目录
+alias cdfzf='cd "$(fzf)"'
+# 快速编辑文件
+alias vifzf='vim "$(fzf)"'
