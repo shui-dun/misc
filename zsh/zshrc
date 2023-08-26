@@ -3963,7 +3963,6 @@ unfunction grml_status_feature
 # 
 # export dt=$(wslpath $(cmd echo %USERPROFILE%\\Desktop)|tr -d '\n\r')
 # export fl=/mnt/d/file
-# cd $HOME
 ### END OF WSL CONFIG ##############
 
 # 取消alias ag="apt upgrade"，因为我们安装了silversearcher-ag
