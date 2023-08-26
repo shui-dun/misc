@@ -4,12 +4,10 @@
 sudo apt install -y zsh 
 # 将用户的默认shell更改为zsh
 chsh -s /bin/zsh
-# 指定输出的配置文件位置
-path=/etc/zshrc
-if [ -d /etc/zsh/ ]; then
-    path=/etc/zsh/zshrc
-fi
-# 复制文件
+# 安装antigen
+curl -L git.io/antigen >.antigen.zsh
+# 复制文件到家目录
+path=$HOME/.zshrc
 sudo cp $(dirname "$0")/zshrc $path
 # 如果存在 `http_proxy` 和 `https_proxy` 环境变量，写入配置文件
 if [ -n "$http_proxy" ]; then
