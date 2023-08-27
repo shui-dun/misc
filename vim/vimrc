@@ -41,6 +41,9 @@ nnoremap X "_x
 " 在可视模式下同样为"_d和"_x提供快捷键
 vnoremap D "_d
 vnoremap X "_x
+" 为"+y（复制到系统剪贴板）提供快捷键，设置为大写Y
+nnoremap Y "+y
+vnoremap Y "+y
 
 " 插件管理
 call plug#begin()
