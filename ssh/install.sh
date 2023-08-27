@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 本脚本用于安装ssh服务，并修改配置文件（允许root登录，允许密码登录，修改端口号）
+
 sudo apt install -y ssh
 
 sshd_config="/etc/ssh/sshd_config"
