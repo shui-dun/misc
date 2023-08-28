@@ -17,6 +17,17 @@ antigen theme robbyrussell
 # 最后必须提交确认修改
 antigen apply
 
+# smart cd function, allows switching to /etc when running 'cd /etc/fstab'
+function cd () {
+    if (( ${#argv} == 1 )) && [[ -f ${1} ]]; then
+        [[ ! -e ${1:h} ]] && return 1
+        print "Correcting ${1} to ${1:h}"
+        builtin cd ${1:h}
+    else
+        builtin cd "$@"
+    fi
+}
+
 # 为了与bash兼容
 setopt no_nomatch
 # 禁用rm，使用trash-cli代替

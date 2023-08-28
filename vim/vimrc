@@ -2,6 +2,10 @@
 set number
 " 显示命令
 set showcmd
+" 搜索时忽略大小写
+set ignorecase
+" 如果搜索中有一个或以上的大写字母，则不忽略大小写
+set smartcase
 " 每行的缩进值和上一行相等
 set autoindent
 " 按F12切换粘贴模式
