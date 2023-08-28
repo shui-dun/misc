@@ -6,6 +6,8 @@ set showcmd
 set ignorecase
 " 如果搜索中有一个或以上的大写字母，则不忽略大小写
 set smartcase
+" 搜索时高亮显示匹配的文本
+set hlsearch
 " 每行的缩进值和上一行相等
 set autoindent
 " 按F12切换粘贴模式
