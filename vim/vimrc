@@ -2,6 +2,8 @@
 set number
 " 显示命令
 set showcmd
+" 输入命令时按下tab键自动补全
+set wildmenu
 " 搜索时忽略大小写
 set ignorecase
 " 如果搜索中有一个或以上的大写字母，则不忽略大小写
