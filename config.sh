@@ -17,3 +17,4 @@ bash $(dirname $0)/git/install.sh
 bash $(dirname $0)/fzf/install.sh
 bash $(dirname $0)/vim/install.sh
 bash $(dirname $0)/network_info/install.sh
+bash $(dirname $0)/hexer/install.sh
