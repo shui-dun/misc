@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# 显示IP地址和子网掩码
+echo "IP地址和子网掩码:"
+ip -o -f inet addr show | awk '/scope global/ {print $2, $4}'
+
+# 显示默认网关
+echo -e "\n默认网关:"
+ip route | grep default | awk '{print $3}'
+
+# 显示DNS服务器
+echo -e "\nDNS服务器:"
+cat /etc/resolv.conf | grep nameserver | awk '{print $2}'
+
+# 显示代理配置
+echo -e "\n代理配置:"
+echo "HTTP代理: $http_proxy"
+echo "HTTPS代理: $https_proxy"
+echo "FTP代理: $ftp_proxy"
+echo "SOCKS代理: $socks_proxy"
+
+exit 0
+
