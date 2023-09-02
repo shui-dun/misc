@@ -2,7 +2,7 @@
 
 # 显示IP地址和子网掩码
 echo "IP地址和子网掩码:"
-ip -o -f inet addr show | awk '/scope global/ {print $2, $4}'
+ip -o addr show | awk '/scope global/ {print $2, $4}'
 
 # 显示默认网关
 echo -e "\n默认网关:"
