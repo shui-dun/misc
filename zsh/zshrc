@@ -42,5 +42,7 @@ alias lsc='ls --color'
 alias rgc='rg --color=always'
 # 始终带有颜色的ag
 alias agc='ag --color'
+# 为bat设置别名
+alias bat='batcat'
 # 设置bat忽略大小写
 export BAT_PAGER="less -RFi"
