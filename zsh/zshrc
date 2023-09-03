@@ -48,3 +48,6 @@ alias treec='tree -C'
 alias bat='batcat'
 # 设置bat忽略大小写
 export BAT_PAGER="less -RFi"
+
+# 显示欢迎界面
+figlet -f small "hello world" | lolcat

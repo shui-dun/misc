@@ -6,7 +6,7 @@ sudo apt upgrade -y
 # duf是升级版的df
 # ncdu是升级版的du
 # bat是升级版的cat（但调用命令是batcat）
-sudo apt install -y gcc g++ gdb net-tools trash-cli vim tree net-tools zsh ssh neofetch htop cmake sl cowsay cmatrix nodejs docker docker-compose openjdk-17-jdk silversearcher-ag ripgrep duf ncdu bat
+sudo apt install -y gcc g++ gdb net-tools trash-cli vim tree net-tools zsh ssh neofetch htop cmake sl cowsay figlet lolcat cmatrix nodejs docker docker-compose openjdk-17-jdk silversearcher-ag ripgrep duf ncdu bat
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件
 bash $(dirname $0)/zsh/install.sh
