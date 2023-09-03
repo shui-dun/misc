@@ -90,3 +90,8 @@ command! Exp :Fern %:h -drawer
 " 显示隐藏文件
 let g:fern#default_hidden=1
 
+" windows下的配置
+" 增大gui下的字体
+" set guifont=Consolas:h14
+" 修复不能退格的bug
+" set backspace=indent,eol,start
