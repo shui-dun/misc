@@ -73,6 +73,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdalisue/fern.vim'
 " 使用fern作为默认文件浏览器
 Plug 'lambdalisue/fern-hijack.vim'
+" vim初始页
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 " copilot补全所有文件类型
