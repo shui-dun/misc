@@ -10,21 +10,22 @@ set ignorecase
 set smartcase
 " 搜索时高亮显示匹配的文本
 set hlsearch
-" 每行的缩进值和上一行相等
-set autoindent
 " 按F12切换粘贴模式
 set pastetoggle=<F12>
+" 每行的缩进值和上一行相等
+set autoindent
 " tab显示出来是多少个空格的长度
 set tabstop=4
+" 缩进用空格来表示
+set expandtab
 " 按tab时缩进的长度
 set shiftwidth=4
 " 按照文件中其他地方的缩进空格个数来确定一个tab是多少个空格
 set smarttab
 " 按退格键的时候退回缩进的长度
 set softtabstop=4
-" 缩进用空格来表示
-set expandtab
 " 在行首输入tab自动转换为4个空格，否则直接输出一个tab
+" 其实我发现使用这个配置后，expandtab等配置就不需要了
 function! SmartTab()
     let line = getline('.')
     if line =~ '^[ \t]*$'
@@ -33,11 +34,9 @@ function! SmartTab()
         return "\<C-v>\<Tab>"
     endif
 endfunction
-
 inoremap <expr> <Tab> SmartTab()
 " 可视化 tab
 set list
-" set listchars=tab:▸\ ,
 set listchars=tab:>-
 " 设置补全(ctrl+p)时应该查找哪些类型的候选项，以及如何排序
 set cpt=.,k,w,b
@@ -48,7 +47,7 @@ let g:netrw_banner=0
 " 设置netrw的浏览方式为水平分割
 let g:netrw_browse_split=2
 " 设置netrw的分割窗口的宽度（例如通过:Vexplore打开）
-let g:netrw_winsize=30
+let g:netrw_winsize=50
 " 为vim逆天的删除命令"_d和"_x提供快捷键，分别设置为大写D和大写X
 nnoremap D "_d
 nnoremap X "_x
@@ -71,7 +70,9 @@ Plug 'skywind3000/vim-dict'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " 目录树
-" Plug 'preservim/nerdtree'
+Plug 'lambdalisue/fern.vim'
+" 使用fern作为默认文件浏览器
+Plug 'lambdalisue/fern-hijack.vim'
 call plug#end()
 
 " copilot补全所有文件类型
@@ -82,3 +83,10 @@ let g:copilot_filetypes = {
 " lightline配置
 " set laststatus=2
 " set noshowmode
+
+" fern配置
+" 设置自定义命令Exp来打开fern
+command! Exp :Fern %:h -drawer
+" 显示隐藏文件
+let g:fern#default_hidden=1
+
