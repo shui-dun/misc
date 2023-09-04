@@ -42,12 +42,16 @@ alias lsc='ls --color'
 alias rgc='rg --color=always'
 # 始终带有颜色的ag
 alias agc='ag --color'
+# 始终带有颜色的fd
+alias fdc='fd --color=always'
 # 始终带有颜色的tree
 alias treec='tree -C'
 # 为bat设置别名
 alias bat='batcat'
 # 设置bat忽略大小写
 export BAT_PAGER="less -RFi"
+# 为fd设置别名
+alias fd='fdfind'
 
 # 显示欢迎界面
 clear
