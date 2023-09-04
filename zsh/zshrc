@@ -46,6 +46,8 @@ alias agc='ag --color'
 alias fdc='fd --color=always'
 # 始终带有颜色的tree
 alias treec='tree -C'
+# 始终带有颜色的lolcat
+alias lolcatc='lolcat -f'
 # 为bat设置别名
 alias bat='batcat'
 # 设置bat忽略大小写
