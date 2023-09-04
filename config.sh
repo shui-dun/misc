@@ -14,7 +14,7 @@ sudo apt install -y sl cowsay figlet cmatrix neofetch lolcat
 # 安装docker
 sudo apt install -y docker docker-compose
 # 安装实用工具
-sudo apt install -y net-tools trash-cli vim tree zsh ssh \
+sudo apt install -y net-tools trash-cli vim tree zsh ssh lrzsz \
     htop silversearcher-ag ripgrep fd-find duf ncdu bat
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件
