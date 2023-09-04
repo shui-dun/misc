@@ -57,6 +57,15 @@ vnoremap X "_x
 " 为"+y（复制到系统剪贴板）提供快捷键，设置为大写Y
 nnoremap Y "+y
 vnoremap Y "+y
+" 比较当前编辑但没保存的文件和磁盘上的文件
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
 " 插件管理
 call plug#begin()
