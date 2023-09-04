@@ -10,7 +10,7 @@ sudo apt install -y openjdk-17-jdk
 # 安装nodejs环境
 sudo apt install -y nodejs
 # 安装有趣的命令
-sudo apt install -y sl cowsay figlet cmatrix neofetch 
+sudo apt install -y sl cowsay figlet cmatrix neofetch lolcat
 # 安装docker
 sudo apt install -y docker docker-compose
 # 安装实用工具
