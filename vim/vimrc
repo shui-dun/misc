@@ -73,15 +73,9 @@ call plug#begin()
 Plug 'github/copilot.vim'
 " 常见语言的词典
 Plug 'skywind3000/vim-dict'
-" 美化状态栏
-" Plug 'itchyny/lightline.vim'
 " 模糊查找
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-" 目录树
-Plug 'lambdalisue/fern.vim'
-" 使用fern作为默认文件浏览器
-Plug 'lambdalisue/fern-hijack.vim'
 " vim初始页
 Plug 'mhinz/vim-startify'
 call plug#end()
@@ -90,16 +84,6 @@ call plug#end()
 let g:copilot_filetypes = {
 \ '*': v:true,
 \ }
-
-" lightline配置
-" set laststatus=2
-" set noshowmode
-
-" fern配置
-" 设置自定义命令Exp来打开fern
-command! Exp :Fern %:h -drawer
-" 显示隐藏文件
-let g:fern#default_hidden=1
 
 " windows下的配置
 " 增大gui下的字体
