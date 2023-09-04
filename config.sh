@@ -3,10 +3,18 @@
 sudo apt update
 sudo apt upgrade -y
 # 安装基本的工具
-# duf是升级版的df
-# ncdu是升级版的du
-# bat是升级版的cat
-sudo apt install -y gcc g++ gdb net-tools trash-cli vim tree net-tools zsh ssh neofetch htop cmake sl cowsay figlet cmatrix nodejs docker docker-compose openjdk-17-jdk silversearcher-ag ripgrep fd-find duf ncdu bat
+# 安装c/c++环境
+sudo apt install -y gcc g++ gdb cmake
+# 安装java环境
+sudo apt install -y openjdk-17-jdk
+# 安装nodejs环境
+sudo apt install -y nodejs
+# 安装有趣的命令
+sudo apt install -y sl cowsay figlet cmatrix neofetch 
+# 安装docker
+sudo apt install -y docker docker-compose
+# 安装实用工具
+sudo apt install -y net-tools trash-cli vim tree zsh ssh htop silversearcher-ag ripgrep fd-find duf ncdu bat
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件
 bash $(dirname $0)/zsh/install.sh
