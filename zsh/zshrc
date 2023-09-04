@@ -50,4 +50,5 @@ alias bat='batcat'
 export BAT_PAGER="less -RFi"
 
 # 显示欢迎界面
-figlet -f small "hello world" | lolcat
+clear
+cat ~/.welcome
