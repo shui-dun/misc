@@ -12,7 +12,8 @@ antigen bundle zsh-users/zsh-completions
 # 当你输入一个命令时，它会在你的历史记录中搜索匹配的命令进行建议
 antigen bundle zsh-users/zsh-autosuggestions
 # 设置主题，主题可以在ohmyzsh项目themes下找到
-antigen theme gnzh
+# gnzh, fishy, gallifrey 也不错
+antigen theme lukerandall
 
 # 最后必须提交确认修改
 antigen apply
