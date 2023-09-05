@@ -34,6 +34,8 @@ setopt no_nomatch
 # alias rm='echo "Please use trash-cli instead."; false'
 # 终端支持256色
 # export TERM=xterm-256color
+
+# 设置始终带有颜色的各种命令
 # 始终带有颜色的grep（默认情况下，grep不会在管道中使用颜色）
 alias grepc='grep --color=always'
 # 始终带有颜色的ls
@@ -48,10 +50,15 @@ alias fdc='fd --color=always'
 alias treec='tree -C'
 # 始终带有颜色的lolcat
 alias lolcatc='lolcat -f'
+
+# bat相关配置
 # 为bat设置别名
 alias bat='batcat'
 # 设置bat忽略大小写
 export BAT_PAGER="less -RFi"
+# 设置bat主题
+export BAT_THEME="Coldark-Dark"
+
 # 为fd设置别名
 alias fd='fdfind'
 
