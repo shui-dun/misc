@@ -1,4 +1,5 @@
 # 如果node存在并且版本大于等于16，就直接返回
+# command -v node >/dev/null：如果node存在，就返回0,其中-v表示不执行node，只是检查是否存在
 # tr -d 'v'：删除v，比如v16.0.0 -> 16.0.0
 # cut -d. -f1：以.为分隔符，取第一个字段，比如16.0.0 -> 16
 if command -v node >/dev/null && [[ $(node -v | tr -d 'v' | cut -d. -f1) -ge 16 ]]; then

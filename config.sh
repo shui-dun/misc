@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 应该先配置apt，因为后面的安装会用到apt
+bash $(dirname $0)/apt/install.sh
 sudo apt update
 sudo apt upgrade -y
 # 安装基本的工具
@@ -17,7 +19,6 @@ sudo apt install -y net-tools trash-cli tree zsh ssh lrzsz \
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件
 bash $(dirname $0)/zsh/install.sh
-bash $(dirname $0)/apt/install.sh
 bash $(dirname $0)/ssh/install.sh
 bash $(dirname $0)/htop/install.sh
 bash $(dirname $0)/git/install.sh

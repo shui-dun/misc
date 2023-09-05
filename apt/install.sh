@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# 该文件根据http_proxy和https_proxy为apt设置代理
-
+# 根据http_proxy和https_proxy为apt设置代理
 # apt的配置文件是按字母数字顺序读取的。给文件前缀添加数字可以帮助确定读取的顺序。99proxy是一个命名约定，以确保这个特定的代理配置是最后被读取的，从而覆盖其他可能的设置
 PROXY_CONF="/etc/apt/apt.conf.d/99proxy.conf"
 
