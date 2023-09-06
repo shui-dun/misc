@@ -86,7 +86,9 @@ let g:copilot_filetypes = {
 \ }
 
 " windows下的配置
-" 增大gui下的字体
+" " 增大gui下的字体
 " set guifont=Consolas:h14
-" 修复不能退格的bug
+" " 修复不能退格的bug
 " set backspace=indent,eol,start
+" " 暗色主题
+" colorscheme darkblue
