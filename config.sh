@@ -10,11 +10,11 @@ sudo apt install -y gcc g++ gdb cmake
 # 安装java环境
 sudo apt install -y openjdk-17-jdk
 # 安装有趣的命令
-sudo apt install -y sl cowsay figlet cmatrix neofetch lolcat
+sudo apt install -y sl cowsay figlet cmatrix neofetch lolcat caca-utils
 # 安装docker
 sudo apt install -y docker docker-compose
 # 安装实用工具
-sudo apt install -y net-tools trash-cli tree zsh ssh lrzsz \
+sudo apt install -y net-tools nmap trash-cli tree zsh ssh lrzsz \
     htop silversearcher-ag ripgrep fd-find duf ncdu bat
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件

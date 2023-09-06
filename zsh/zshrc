@@ -66,3 +66,8 @@ alias fd='fdfind'
 # 显示欢迎界面
 clear
 cat ~/.welcome
+
+# 一些软件会放置在~/.local/bin下，需要将其加入PATH
+export PATH="$PATH:$HOME/.local/bin"
+# 初始化zoxide（一个快速跳转工具）
+eval "$(zoxide init zsh)"

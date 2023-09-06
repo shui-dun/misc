@@ -4,7 +4,7 @@
 sudo apt install -y zsh 
 # 将用户的默认shell更改为zsh
 chsh -s /bin/zsh
-# 安装antigen到家目录
+# 安装antigen(zsh插件管理器)
 curl -L git.io/antigen > $HOME/.antigen.zsh
 # 复制文件到家目录
 path=$HOME/.zshrc
@@ -24,3 +24,7 @@ fi
 
 # 将欢迎界面复制到家目录
 cp $(dirname "$0")/welcome $HOME/.welcome
+
+# 安装zoxide(目录跳转工具)到~/.local/bin
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+
