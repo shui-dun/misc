@@ -91,4 +91,4 @@ let g:copilot_filetypes = {
 " " 修复不能退格的bug
 " set backspace=indent,eol,start
 " " 暗色主题
-" colorscheme darkblue
+" colorscheme desert
