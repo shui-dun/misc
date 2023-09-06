@@ -59,7 +59,7 @@ fdc() {
 }
 # 同时依据文件名和文件内容搜索，调用方式：fdrg [文件名] [文件内容] [搜索路径]
 fdrg() {
-    fdfind -HI --type=f "$1" "$3" --batch-size 2000 -X rg -iu. "$2" --color=always | batcat
+    fdfind -HI --type=f "$1" "$3" --batch-size 2000 -X rg -iu. "$2" --color=always 2>/dev/null | batcat
 }
 treec() {
     tree -C "$@" 2>/dev/null | batcat
