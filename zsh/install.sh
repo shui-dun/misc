@@ -25,6 +25,3 @@ fi
 # 将欢迎界面复制到家目录
 cp $(dirname "$0")/welcome $HOME/.welcome
 
-# 安装zoxide(目录跳转工具)到~/.local/bin
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-
