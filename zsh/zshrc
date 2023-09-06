@@ -45,19 +45,19 @@ cd () {
     fi
 }
 lsc () {
-    ls -ahl --color $@ | batcat
+    ls -ahl --color "$@" | batcat
 }
 rgc() {
-    rg -iu. --color=always $@ 2>/dev/null | batcat
+    rg -iu. --color=always "$@" 2>/dev/null | batcat
 }
 agc() {
-    ag --color $@ 2>/dev/null | batcat
+    ag --color "$@" 2>/dev/null | batcat
 }
 fdc() {
-    fdfind --color=always -HI $@ 2>/dev/null | batcat
+    fdfind --color=always -HI "$@" 2>/dev/null | batcat
 }
 treec() {
-    tree -C $@ 2>/dev/null | batcat
+    tree -C "$@" 2>/dev/null | batcat
 }
 
 # bat相关配置
