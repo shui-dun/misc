@@ -13,6 +13,8 @@ fi
 # 安装zoxide到~/.local/bin
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
-# zsh中添加zoxide的初始化脚本
-echo 'compinit' >> ~/.zshrc
-echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc
+# zshrc中添加zoxide的初始化脚本
+echo '# 初始化zoxide
+autoload -Uz compinit
+compinit
+eval "$(zoxide init zsh)"' >> ~/.zshrc
