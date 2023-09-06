@@ -1,4 +1,5 @@
-# 导入antigen.zsh，antigen.zsh是一个管理zsh插件的工具
+# antigen配置, 用于管理zsh插件
+# 导入antigen.zsh
 source ~/.antigen.zsh
 # 使用使用 oh-my-zsh 作为默认的插件和主题源
 # 相比于加载 oh-my-zsh 中的大量默认插件，你可以仅加载所需的插件，这会减少启动时间
@@ -18,8 +19,23 @@ antigen theme lukerandall
 # 最后必须提交确认修改
 antigen apply
 
-# smart cd function, allows switching to /etc when running 'cd /etc/fstab'
-function cd () {
+# 一些软件会放置在~/.local/bin下，需要将其加入PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# 与bash兼容
+setopt no_nomatch
+# 禁用rm，使用trash-cli代替
+# alias rm='echo "Please use trash-cli instead."; false'
+# 终端支持256色
+# export TERM=xterm-256color
+
+# 给命令设置别名
+alias fd='fdfind'
+alias bat='batcat'
+
+# 自定义函数
+# 如果cd的参数是一个文件，那么自动切换到该文件所在的目录
+cd () {
     if (( ${#argv} == 1 )) && [[ -f ${1} ]]; then
         [[ ! -e ${1:h} ]] && return 1
         print "Correcting ${1} to ${1:h}"
@@ -28,44 +44,29 @@ function cd () {
         builtin cd "$@"
     fi
 }
-
-# 为了与bash兼容
-setopt no_nomatch
-# 禁用rm，使用trash-cli代替
-# alias rm='echo "Please use trash-cli instead."; false'
-# 终端支持256色
-# export TERM=xterm-256color
-
-# 设置始终带有颜色的各种命令
-# 始终带有颜色的grep（默认情况下，grep不会在管道中使用颜色）
-alias grepc='grep --color=always'
-# 始终带有颜色的ls
-alias lsc='ls --color'
-# 始终带有颜色的rg
-alias rgc='rg --color=always'
-# 始终带有颜色的ag
-alias agc='ag --color'
-# 始终带有颜色的fd
-alias fdc='fd --color=always'
-# 始终带有颜色的tree
-alias treec='tree -C'
-# 始终带有颜色的lolcat
-alias lolcatc='lolcat -f'
+lsc () {
+    ls -ahl --color $@ | batcat
+}
+rgc() {
+    rg -iu. --color=always $@ 2>/dev/null | batcat
+}
+agc() {
+    ag --color $@ 2>/dev/null | batcat
+}
+fdc() {
+    fdfind --color=always -HI $@ 2>/dev/null | batcat
+}
+treec() {
+    tree -C $@ 2>/dev/null | batcat
+}
 
 # bat相关配置
-# 为bat设置别名
-alias bat='batcat'
 # 设置bat忽略大小写
 export BAT_PAGER="less -RFi"
 # 设置bat主题
 export BAT_THEME="Coldark-Dark"
 
-# 为fd设置别名
-alias fd='fdfind'
-
 # 显示欢迎界面
 clear
 cat ~/.welcome
 
-# 一些软件会放置在~/.local/bin下，需要将其加入PATH
-export PATH="$PATH:$HOME/.local/bin"
