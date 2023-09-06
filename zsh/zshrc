@@ -44,7 +44,8 @@ cd () {
         builtin cd "$@"
     fi
 }
-lsc () {
+unalias l 2>/dev/null
+l () {
     ls -ahl --color "$@" | batcat
 }
 rgc() {
