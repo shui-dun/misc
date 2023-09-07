@@ -73,6 +73,8 @@ com! DiffSaved call s:DiffWithSaved()
 nnoremap / /\v
 " 替换时默认开启very magic模式
 cnoremap s/ s/\v
+" 可视化模式下ctrl+c复制（为了兼容外部翻译软件）
+vnoremap <C-c> "+y
 
 " 插件管理
 call plug#begin()
