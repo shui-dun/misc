@@ -1,5 +1,9 @@
 " 显示行号
 set number
+" W用来快速水平移动
+nnoremap W 15w
+" B用来快速水平移动
+nnoremap B 15b
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
@@ -147,3 +151,5 @@ let g:fzf_action = { 'enter': 'vsplit' }
 " au GUIEnter * simalt ~x
 " " 禁止光标闪烁
 " set guicursor+=a:blinkon0
+" " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
+" let g:fzf_preview_window='right:0'
