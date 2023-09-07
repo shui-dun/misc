@@ -1,8 +1,8 @@
 " 显示行号
 set number
-" W用来快速水平移动
+" W用来快速水平向后移动
 nnoremap W 15w
-" B用来快速水平移动
+" B用来快速水平向前移动
 nnoremap B 15b
 " 显示命令
 set showcmd
