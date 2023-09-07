@@ -65,6 +65,10 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+" 搜索时默认开启very magic模式（类似于perl的正则表达式）
+nnoremap / /\v
+" 替换时默认开启very magic模式
+cnoremap s/ s/\v
 
 " 插件管理
 call plug#begin()
