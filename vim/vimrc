@@ -108,3 +108,5 @@ let g:copilot_filetypes = {
 " set guioptions-=b
 " " 启动时最大化
 " au GUIEnter * simalt ~x
+" " 禁止光标闪烁
+" set guicursor+=a:blinkon0
