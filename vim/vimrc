@@ -96,6 +96,8 @@ let g:copilot_filetypes = {
 " fzf.vim配置
 " ctrl+h打开命令历史记录（:History:）
 nnoremap <silent> <C-h> :History:<CR>
+" 默认在new window中打开文件
+let g:fzf_action = { 'enter': 'vsplit' }
 
 " windows下gvim的配置
 " " 设置gui下的字体
