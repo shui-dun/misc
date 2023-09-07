@@ -2,8 +2,12 @@
 set number
 " 显示命令
 set showcmd
+" 设置保存的历史命令数目
+set history=200
 " 输入命令时按下tab键自动补全
 set wildmenu
+set wildmode=longest:full,full
+set wildoptions=pum
 " 搜索时忽略大小写
 set ignorecase
 " 如果搜索中有一个或以上的大写字母，则不忽略大小写
@@ -83,10 +87,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 call plug#end()
 
-" copilot补全所有文件类型
+" copilot配置
+" 补全所有文件类型
 let g:copilot_filetypes = {
 \ '*': v:true,
 \ }
+
+" fzf.vim配置
+" ctrl+h打开命令历史记录（:History:）
+nnoremap <silent> <C-h> :History:<CR>
 
 " windows下gvim的配置
 " " 设置gui下的字体
