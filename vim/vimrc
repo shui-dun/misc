@@ -75,6 +75,30 @@ nnoremap / /\v
 cnoremap s/ s/\v
 " 可视化模式下ctrl+c复制（为了兼容外部翻译软件）
 vnoremap <C-c> "+y
+" 统计字数（包含中文字符和英文单词）
+function! WordCnt() range
+    let save = @z
+    silent exec 'normal! gv"zy'
+    let text = @z
+    let @z = save
+    silent exec 'normal! gv'
+
+    " 统计中文字符数目
+    let cc = 0
+    for char in split(text, '\zs')
+        if char2nr(char) >= 0x2000
+            let cc += 1
+        endif
+    endfor
+
+    " 移除选中文本中的中文字符（这一步太耗时了）
+    " let engText = substitute(text, '[\u4e00-\u9fff]', '', 'g')
+    " 统计单词数目（按照空格和各种标点符号以及换行符分割）
+    let wordCount = len(split(text, '[[:blank:][:punct:][:cntrl:]]\+'))
+    echo "Count of Chinese characters is:" cc
+    echo "Count of words is:" wordCount
+endfunc
+command! -range WordCnt <line1>,<line2>call WordCnt()
 
 " 插件管理
 call plug#begin()
