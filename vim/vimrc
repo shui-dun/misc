@@ -57,6 +57,9 @@ vnoremap X "_x
 " 为"+y（复制到系统剪贴板）提供快捷键，设置为大写Y
 nnoremap Y "+y
 vnoremap Y "+y
+" 为"+p（从系统剪贴板粘贴）提供快捷键，设置为大写V
+nnoremap V "+p
+vnoremap V "+p
 " 比较当前编辑但没保存的文件和磁盘上的文件
 function! s:DiffWithSaved()
   let filetype=&ft
@@ -85,10 +88,23 @@ let g:copilot_filetypes = {
 \ '*': v:true,
 \ }
 
-" windows下的配置
-" " 增大gui下的字体
-" set guifont=Consolas:h14
+" windows下gvim的配置
+" " 设置gui下的字体
+" " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
+" set guifont=Consolas-with-Yahei:h14
 " " 修复不能退格的bug
 " set backspace=indent,eol,start
 " " 暗色主题
 " colorscheme desert
+" " 删除菜单栏
+" set guioptions-=m
+" " 删除工具栏
+" set guioptions-=T
+" " 删除右侧滚动条
+" set guioptions-=r
+" " 删除左侧滚动条
+" set guioptions-=L
+" " 删除底部滚动条
+" set guioptions-=b
+" " 启动时最大化
+" au GUIEnter * simalt ~x
