@@ -127,6 +127,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " vim初始页
 Plug 'mhinz/vim-startify'
+" 快速跳转
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " copilot配置
@@ -140,6 +142,12 @@ let g:copilot_filetypes = {
 nnoremap <silent> <C-h> :History:<CR>
 " 默认在new window中打开文件
 let g:fzf_action = { 'enter': 'vsplit' }
+
+"easy motion配置
+" 禁用所有默认的快捷键
+let g:EasyMotion_do_mapping = 0
+" 设置easymotion-s2的快捷键为s
+map s <Plug>(easymotion-s2)
 
 " windows下gvim的配置
 " " 设置gui下的字体
