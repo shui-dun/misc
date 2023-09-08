@@ -1,9 +1,10 @@
 " 显示行号
 set number
-" W用来快速水平向后移动
-nnoremap W 15w
-" B用来快速水平向前移动
-nnoremap B 15b
+" L和H用来快速水平移动
+nnoremap L 80l
+vnoremap L 80l
+nnoremap H 80h
+vnoremap H 80h 
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
@@ -18,31 +19,42 @@ set ignorecase
 set smartcase
 " 搜索时高亮显示匹配的文本
 set hlsearch
-" 按F12切换粘贴模式
+" 按F12切换粘贴模式，避免粘贴时自动缩进，以及tab被转化为空格
 set pastetoggle=<F12>
 " 每行的缩进值和上一行相等
 set autoindent
 " tab显示出来是多少个空格的长度
 set tabstop=4
-" 缩进用空格来表示
-set expandtab
 " 按tab时缩进的长度
 set shiftwidth=4
-" 按照文件中其他地方的缩进空格个数来确定一个tab是多少个空格
-set smarttab
 " 按退格键的时候退回缩进的长度
 set softtabstop=4
-" 在行首输入tab自动转换为4个空格，否则直接输出一个tab
-" 其实我发现使用这个配置后，expandtab等配置就不需要了
-function! SmartTab()
-    let line = getline('.')
-    if line =~ '^[ \t]*$'
-        return "\<Space>\<Space>\<Space>\<Space>"
-    else
-        return "\<C-v>\<Tab>"
-    endif
+" 缩进用空格来表示
+set expandtab
+function! DetectIndent()
+    " 只检测文件的前N行来提高效率，避免在大文件中造成延迟
+    let l:maxLines = min([line('$'), 100])
+
+    for i in range(1, l:maxLines)
+        let l:line = getline(i)
+        " 检测tab风格的缩进
+        if l:line =~ '^\t'
+            set tabstop=4
+            set shiftwidth=4
+            set softtabstop=4
+            set noexpandtab
+            return
+        " 检测2个空格风格的缩进
+        elseif l:line =~ '^  \S'
+            set tabstop=2
+            set shiftwidth=2
+            set softtabstop=2
+            set expandtab
+            return
+        endif
+    endfor
 endfunction
-inoremap <expr> <Tab> SmartTab()
+autocmd BufRead,BufNewFile * call DetectIndent()
 " 可视化 tab
 set list
 set listchars=tab:>-
@@ -66,11 +78,11 @@ vnoremap X "_x
 set clipboard=unnamed,unnamedplus
 " 比较当前编辑但没保存的文件和磁盘上的文件
 function! s:DiffWithSaved()
-  let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
-  diffthis
-  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 " 搜索时默认开启very magic模式（类似于perl的正则表达式）
@@ -95,7 +107,7 @@ function! WordCnt() range
         endif
     endfor
 
-    " 移除选中文本中的中文字符（这一步太耗时了）
+    " 移除选中文本中的中文字符（但这一步太耗时了）
     " let engText = substitute(text, '[\u4e00-\u9fff]', '', 'g')
     " 统计单词数目（按照空格和各种标点符号以及换行符分割）
     let wordCount = len(split(text, '[[:blank:][:punct:][:cntrl:]]\+'))
