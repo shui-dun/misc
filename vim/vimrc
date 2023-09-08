@@ -129,6 +129,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 " 快速跳转
 Plug 'easymotion/vim-easymotion'
+" 注释
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 " copilot配置
@@ -143,11 +145,23 @@ nnoremap <silent> <C-h> :History:<CR>
 " 默认在new window中打开文件
 let g:fzf_action = { 'enter': 'vsplit' }
 
-"easy motion配置
+" easymotion配置
 " 禁用所有默认的快捷键
 let g:EasyMotion_do_mapping = 0
 " 设置easymotion-s2的快捷键为s
 map s <Plug>(easymotion-s2)
+
+" nerdcommenter配置
+" 禁用默认的快捷键
+let g:NERDCreateDefaultMappings = 0
+" 设置添加注释的快捷键为ctrl+/
+nnoremap <C-/> <Plug>NERDCommenterComment
+vnoremap <C-/> <Plug>NERDCommenterComment
+" 设置取消注释的快捷键为shift+/，即?
+nnoremap ? <Plug>NERDCommenterUncomment
+vnoremap ? <Plug>NERDCommenterUncomment
+" 注释之后加一个空格
+let g:NERDSpaceDelims = 1
 
 " windows下gvim的配置
 " " 设置gui下的字体
