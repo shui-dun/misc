@@ -1,5 +1,5 @@
-" 设置前缀键（leader键）
-let mapleader=","
+" 设置前缀键（leader键）为空格
+let mapleader="\<Space>"
 " 显示行号
 set number
 " L和H用来快速水平移动
@@ -142,8 +142,10 @@ let g:copilot_filetypes = {
 \ }
 
 " fzf.vim配置
-" ctrl+h打开命令历史记录（:History:）
-nnoremap <silent> <C-h> :History:<CR>
+" leader+h打开命令历史记录（:History:）
+nnoremap <leader>h :History:<CR>
+" leader+f打开最近文件（:History）
+nnoremap <leader>f :History<CR>
 " 默认在new window中打开文件
 let g:fzf_action = { 'enter': 'vsplit' }
 
@@ -157,11 +159,11 @@ map s <Plug>(easymotion-s2)
 " 禁用默认的快捷键
 let g:NERDCreateDefaultMappings = 0
 " 设置添加注释的快捷键
-nnoremap <leader>cc <Plug>NERDCommenterComment
-vnoremap <leader>cc <Plug>NERDCommenterComment
+nnoremap <leader>c <Plug>NERDCommenterComment
+vnoremap <leader>c <Plug>NERDCommenterComment
 " 设置取消注释的快捷键
-nnoremap <leader>cu <Plug>NERDCommenterUncomment
-vnoremap <leader>cu <Plug>NERDCommenterUncomment
+nnoremap <leader>u <Plug>NERDCommenterUncomment
+vnoremap <leader>u <Plug>NERDCommenterUncomment
 " 注释之后加一个空格
 let g:NERDSpaceDelims = 1
 
