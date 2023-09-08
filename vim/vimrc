@@ -8,7 +8,7 @@ vnoremap H 80h
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
-set history=200
+set history=1000
 " 输入命令时按下tab键自动补全
 set wildmenu
 set wildmode=longest:full,full
