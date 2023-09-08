@@ -7,6 +7,12 @@ nnoremap L 80l
 vnoremap L 80l
 nnoremap H 80h
 vnoremap H 80h 
+" J和K映射到ctrl+b和ctrl+f
+nnoremap J <C-f>
+vnoremap J <C-f>
+nnoremap K <C-b>
+vnoremap K <C-b>
+
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
@@ -156,8 +162,8 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 " 设置根据字符搜索的快捷键为s
 map s <Plug>(easymotion-s)
-" 设置行跳转的快捷键为L
-map L <Plug>(easymotion-bd-jk)
+" 设置行跳转的快捷键
+map <leader>l <Plug>(easymotion-bd-jk)
 
 " nerdcommenter配置
 " 禁用默认的快捷键
