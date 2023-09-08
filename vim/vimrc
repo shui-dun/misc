@@ -89,8 +89,8 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 " 搜索时默认开启very magic模式（类似于perl的正则表达式）
 nnoremap / /\v
-" 替换时默认开启very magic模式
-cnoremap s/ s/\v
+" leader+r替换，默认开启very magic模式
+nnoremap <leader>r :%s/\v//gc<left><left><left><left>
 " 可视化模式下ctrl+c复制（为了兼容外部翻译软件）
 vnoremap <C-c> "+y
 " 统计字数（包含中文字符和英文单词）
