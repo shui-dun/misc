@@ -156,8 +156,8 @@ let g:copilot_filetypes = {
 nnoremap <leader>h :History:<CR>
 " leader+f打开最近文件（:History）
 nnoremap <leader>f :History<CR>
-" 默认在new window中打开文件
-let g:fzf_action = { 'enter': 'vsplit' }
+" leader+t打开当前文件的标签（:BTags）
+nnoremap <leader>t :BTags<CR>
 
 " easymotion配置
 " 禁用所有默认的快捷键
