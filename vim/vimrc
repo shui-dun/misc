@@ -169,12 +169,11 @@ map <leader>l <Plug>(easymotion-bd-jk)
 " nerdcommenter配置
 " 禁用默认的快捷键
 let g:NERDCreateDefaultMappings = 0
-" 设置添加注释的快捷键
-nnoremap <leader>c V<Plug>NERDCommenterComment
-vnoremap <leader>c V<Plug>NERDCommenterComment
-" 设置取消注释的快捷键
-nnoremap <leader>u V<Plug>NERDCommenterUncomment
-vnoremap <leader>u V<Plug>NERDCommenterUncomment
+" 检查所有选定的行是否已被注释（只要有一行没有被注释，就添加注释而非删除注释）
+let g:NERDToggleCheckAllLines = 1
+" 设置toggle注释的快捷键
+nnoremap <leader>c V<Plug>NERDCommenterToggle
+vnoremap <leader>c V<Plug>NERDCommenterToggle
 " 注释之后加一个空格
 let g:NERDSpaceDelims = 1
 
@@ -263,3 +262,7 @@ let g:NERDSpaceDelims = 1
 " " 删除键删除而非剪切
 " nnoremap <Del> "_x
 " vnoremap <Del> "_x
+" " 使用ctrl+/toggle注释
+" nnoremap <C-/> V<Plug>NERDCommenterToggle
+" inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
+" vnoremap <C-/> V<Plug>NERDCommenterToggle
