@@ -189,6 +189,10 @@ nnoremap <leader>c V<Plug>NERDCommenterToggle
 vnoremap <leader>c V<Plug>NERDCommenterToggle
 " 注释之后加一个空格
 let g:NERDSpaceDelims = 1
+" python自动会多加一个空格
+au FileType python let g:NERDSpaceDelims = 0
+" 设置注释的对齐方式是左对齐
+let g:NERDDefaultAlign = 'left'
 
 " windows下gvim的配置
 " " 设置gui下的字体
