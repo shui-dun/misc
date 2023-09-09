@@ -4,6 +4,8 @@
 sudo add-apt-repository ppa:jonathonf/vim
 # 安装vim
 sudo apt install -y vim
+# 安装ctags（用于生成tags文件）
+sudo apt install -y universal-ctags
 # 复制vimrc文件到用户目录
 cp $(dirname "$0")/vimrc ~/.vimrc
 # 安装vim插件管理器
