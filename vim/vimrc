@@ -203,6 +203,7 @@ let g:NERDSpaceDelims = 1
 " " ctrl+c复制
 " vnoremap <C-c> "+y
 " " ctrl+v粘贴
+" nnoremap <C-v> "+p
 " vnoremap <C-v> "+p
 " inoremap <C-v> <C-r><C-o>+
 " " ctrl+x剪切
