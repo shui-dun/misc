@@ -98,8 +98,6 @@ com! DiffSaved call s:DiffWithSaved()
 nnoremap / /\v
 " leader+r替换，默认开启very magic模式
 nnoremap <leader>r :%s/\v//gc<left><left><left><left>
-" 可视化模式下ctrl+c复制（为了兼容外部翻译软件）
-vnoremap <C-c> "+y
 " 统计字数（包含中文字符和英文单词）
 function! WordCnt() range
     let save = @z
@@ -202,3 +200,5 @@ let g:NERDSpaceDelims = 1
 " set guicursor+=a:blinkon0
 " " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
 " let g:fzf_preview_window='right:0'
+" " 可视化模式下ctrl+c复制（为了兼容外部翻译软件）
+" vnoremap <C-c> "+y
