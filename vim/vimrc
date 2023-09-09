@@ -203,4 +203,4 @@ let g:NERDSpaceDelims = 1
 " " ctrl+c复制，ctrl+y粘贴（为了兼容外部翻译软件与windows剪切板历史等）
 " vnoremap <C-c> "+y
 " vnoremap <C-v> "+p
-" inoremap <C-v> <C-r>+
+" inoremap <C-v> <C-r><C-o>+
