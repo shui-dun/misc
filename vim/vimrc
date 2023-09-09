@@ -125,6 +125,16 @@ function! WordCnt() range
     echo "Count of words is:" wordCount
 endfunc
 command! -range WordCnt <line1>,<line2>call WordCnt()
+" 细粒度的undo
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ( (<c-g>u
+inoremap [ [<c-g>u
+inoremap = =<c-g>u
+inoremap <space> <space><c-g>u
+inoremap <CR> <CR><c-g>u
+inoremap ， ，<c-g>u
+inoremap 。 。<c-g>u
 
 " 插件管理
 call plug#begin()
