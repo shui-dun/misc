@@ -192,12 +192,10 @@ let g:NERDSpaceDelims = 1
 " set guioptions-=m
 " " 删除工具栏
 " set guioptions-=T
-" " 删除右侧滚动条
-" set guioptions-=r
-" " 删除左侧滚动条
-" set guioptions-=L
-" " 删除底部滚动条
-" set guioptions-=b
+" " 添加右侧垂直滚动条
+" set guioptions+=r
+" " 添加左侧水平滚动条
+" set guioptions+=L
 " " 启动时最大化
 " au GUIEnter * simalt ~x
 " " 禁止光标闪烁
