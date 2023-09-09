@@ -76,10 +76,11 @@ let g:netrw_banner=0
 let g:netrw_browse_split=2
 " 设置netrw的分割窗口的宽度（例如通过:Vexplore打开）
 let g:netrw_winsize=50
-" 为vim逆天的删除命令"_d和"_x提供快捷键，分别设置为大写D和大写X
+" 普通模式下的x和X是删除而不是剪切
+nnoremap x "_x
+nnoremap X "_X
+" 为d和x提供删除版本的快捷键
 nnoremap D "_d
-nnoremap X "_x
-" 在可视模式下同样为"_d和"_x提供快捷键
 vnoremap D "_d
 vnoremap X "_x
 " 让剪切板寄存器 "+ 与 "* 和匿名寄存器 "" 保持同步
