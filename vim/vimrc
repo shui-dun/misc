@@ -168,11 +168,11 @@ map <leader>l <Plug>(easymotion-bd-jk)
 " 禁用默认的快捷键
 let g:NERDCreateDefaultMappings = 0
 " 设置添加注释的快捷键
-nnoremap <leader>c <Plug>NERDCommenterComment
-vnoremap <leader>c <Plug>NERDCommenterComment
+nnoremap <leader>c V<Plug>NERDCommenterComment
+vnoremap <leader>c V<Plug>NERDCommenterComment
 " 设置取消注释的快捷键
-nnoremap <leader>u <Plug>NERDCommenterUncomment
-vnoremap <leader>u <Plug>NERDCommenterUncomment
+nnoremap <leader>u V<Plug>NERDCommenterUncomment
+vnoremap <leader>u V<Plug>NERDCommenterUncomment
 " 注释之后加一个空格
 let g:NERDSpaceDelims = 1
 
