@@ -183,7 +183,7 @@ let g:NERDSpaceDelims = 1
 " windows下gvim的配置
 " " 设置gui下的字体
 " " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
-" set guifont=Consolas-with-Yahei:h14
+" set guifont=Consolas-with-Yahei:h13
 " " 修复不能退格的bug
 " set backspace=indent,eol,start
 " " 暗色主题
@@ -194,8 +194,10 @@ let g:NERDSpaceDelims = 1
 " set guioptions-=T
 " " 添加右侧垂直滚动条
 " set guioptions+=r
-" " 添加左侧水平滚动条
-" set guioptions+=L
+" " 删除左侧水平滚动条
+" set guioptions-=L
+" " 删除底部状态栏
+" set guioptions-=b
 " " 启动时最大化
 " au GUIEnter * simalt ~x
 " " 禁止光标闪烁
