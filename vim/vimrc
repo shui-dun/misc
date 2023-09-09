@@ -77,8 +77,10 @@ let g:netrw_liststyle=3
 let g:netrw_banner=0
 " 设置netrw的浏览方式为水平分割
 let g:netrw_browse_split=2
-" 设置netrw的分割窗口的宽度（例如通过:Vexplore打开）
+" 设置netrw的分割窗口的宽度
 let g:netrw_winsize=50
+" 打开netrw快捷键
+nnoremap <leader>e :Vexplore<CR>
 " 普通模式下的x和X是删除而不是剪切
 nnoremap x "_x
 nnoremap X "_X
@@ -151,7 +153,7 @@ Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 " 注释
 Plug 'preservim/nerdcommenter'
-" 查看文件结构
+" 查看文件tag
 Plug 'preservim/tagbar'
 call plug#end()
 
@@ -193,6 +195,9 @@ let g:NERDSpaceDelims = 1
 au FileType python let g:NERDSpaceDelims = 0
 " 设置注释的对齐方式是左对齐
 let g:NERDDefaultAlign = 'left'
+
+" tagbar配置
+nnoremap <leader>b :TagbarToggle<CR>
 
 " windows下gvim的配置
 " " 设置gui下的字体
@@ -283,3 +288,5 @@ let g:NERDDefaultAlign = 'left'
 " nnoremap <C-/> V<Plug>NERDCommenterToggle
 " inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
 " vnoremap <C-/> V<Plug>NERDCommenterToggle
+" " 打开explorer.exe快捷键
+" nnoremap <leader>E :!explorer %:h<CR>
