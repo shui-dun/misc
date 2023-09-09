@@ -138,6 +138,8 @@ Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 " 注释
 Plug 'preservim/nerdcommenter'
+" 查看文件结构
+Plug 'preservim/tagbar'
 call plug#end()
 
 " copilot配置
