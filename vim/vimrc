@@ -156,7 +156,8 @@ Plug 'preservim/nerdcommenter'
 " 查看文件tag
 Plug 'preservim/tagbar'
 " 代码补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 这东西很占内存，按需启用
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " copilot配置
@@ -202,36 +203,37 @@ let g:NERDDefaultAlign = 'left'
 nnoremap <leader>b :TagbarToggle<CR>
 
 " coc.nvim配置
-set nobackup
-set nowritebackup
-set updatetime=300
-set signcolumn=no
-" 使用回车补全，使用ctrl+n/p选择
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" navigate diagnostics
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-" GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" show documentation in preview window
-nnoremap <silent> <leader>od :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  endif
-endfunction
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Symbol renaming
-nmap <leader>or <Plug>(coc-rename)
-" Formatting selected code
-xmap <leader>of  <Plug>(coc-format-selected)
-" Applying code actions to the selected code block
-nmap <leader>oa  <Plug>(coc-codeaction-cursor)
+" 这东西很占内存，按需启用
+" set nobackup
+" set nowritebackup
+" set updatetime=300
+" set signcolumn=no
+" " 使用回车补全，使用ctrl+n/p选择
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" " navigate diagnostics
+" nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+" nmap <silent> g] <Plug>(coc-diagnostic-next)
+" " GoTo code navigation
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+" " show documentation in preview window
+" nnoremap <silent> <leader>od :call ShowDocumentation()<CR>
+" function! ShowDocumentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   endif
+" endfunction
+" " Highlight the symbol and its references when holding the cursor
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" " Symbol renaming
+" nmap <leader>or <Plug>(coc-rename)
+" " Formatting selected code
+" xmap <leader>of  <Plug>(coc-format-selected)
+" " Applying code actions to the selected code block
+" nmap <leader>oa  <Plug>(coc-codeaction-cursor)
 
 " windows下gvim的配置
 " " 设置gui下的字体
