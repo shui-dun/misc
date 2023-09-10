@@ -325,5 +325,8 @@ nmap <leader>of  <Plug>(coc-format-selected)
 " nnoremap <C-/> V<Plug>NERDCommenterToggle
 " inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
 " vnoremap <C-/> V<Plug>NERDCommenterToggle
+" " 可视模式下tab和shift+tab缩进和反缩进
+" vnoremap <Tab> >gv
+" vnoremap <S-Tab> <gv
 " " 打开explorer.exe快捷键
 " nnoremap <leader>E :!explorer %:h<CR>
