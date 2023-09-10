@@ -209,22 +209,19 @@ set signcolumn=no
 " 使用回车补全，使用ctrl+n/p选择
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" navigate diagnostics
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
+" show documentation in preview window
+nnoremap <silent> <leader>od :call ShowDocumentation()<CR>
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
   endif
 endfunction
 " Highlight the symbol and its references when holding the cursor
@@ -233,8 +230,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>or <Plug>(coc-rename)
 " Formatting selected code
 xmap <leader>of  <Plug>(coc-format-selected)
-nmap <leader>of  <Plug>(coc-format-selected)
-
+" Applying code actions to the selected code block
+nmap <leader>oa  <Plug>(coc-codeaction-cursor)
 
 " windows下gvim的配置
 " " 设置gui下的字体
