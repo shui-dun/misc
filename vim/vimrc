@@ -160,8 +160,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" 自动括号配对
-Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " copilot配置
@@ -251,6 +249,7 @@ nmap <leader>oa  <Plug>(coc-codeaction-cursor)
 let g:coc_start_at_startup=0
 " 手动启动coc
 nnoremap <leader>oo :CocStart<CR>
+
 
 " windows下gvim的配置
 " " 设置gui下的字体
