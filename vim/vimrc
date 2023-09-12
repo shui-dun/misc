@@ -3,7 +3,7 @@ let mapleader="\<Space>"
 " 显示行号
 set number
 " 语法折叠
-set foldmethod=syntax
+set foldmethod=indent
 " 默认内容都是展开的
 set foldlevelstart=99
 " L和H用来快速水平移动
@@ -16,7 +16,6 @@ nnoremap J <C-f>
 vnoremap J <C-f>
 nnoremap K <C-b>
 vnoremap K <C-b>
-
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
