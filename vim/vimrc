@@ -2,6 +2,10 @@
 let mapleader="\<Space>"
 " 显示行号
 set number
+" 语法折叠
+set foldmethod=syntax
+" 默认内容都是展开的
+set foldlevelstart=99
 " L和H用来快速水平移动
 nnoremap L 80l
 vnoremap L 80l
