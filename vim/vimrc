@@ -69,9 +69,9 @@ function! DetectIndent()
     endfor
 endfunction
 autocmd BufRead,BufNewFile * call DetectIndent()
-" 可视化 tab
+" 可视化tab等特殊字符
 set list
-set listchars=tab:>-
+set listchars=tab:>-,trail:.
 " 设置补全(ctrl+p)时应该查找哪些类型的候选项，以及如何排序
 set cpt=.,k,w,b
 " 补全时不要自动插入
@@ -143,6 +143,17 @@ inoremap <space> <space><c-g>u
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
+
+" 对大文件（大于16MB）的设置
+" 取消语法高亮
+" 取消折叠
+" 取消自动换行
+autocmd BufReadPre * if getfsize(bufname('%')) > 16*1024*1024
+    \ | syntax off
+    \ | setlocal nofoldenable
+    \ | setlocal nowrap
+    \ | endif
+
 
 " 插件管理
 call plug#begin()
