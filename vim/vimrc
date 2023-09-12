@@ -137,7 +137,7 @@ inoremap [ [<c-g>u
 inoremap = =<c-g>u
 inoremap <space> <space><c-g>u
 " 回车应用补全
-inoremap <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
+inoremap <silent><expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
 
