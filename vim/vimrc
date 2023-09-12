@@ -68,7 +68,8 @@ function! DetectIndent()
         endif
     endfor
 endfunction
-autocmd BufRead,BufNewFile * call DetectIndent()
+" 只针对小文件进行缩进检测
+autocmd BufReadPre * if getfsize(bufname('%')) < 32*1024*1024 | call DetectIndent() | endif
 " 可视化tab等特殊字符
 set list
 set listchars=tab:>-,trail:.
@@ -144,11 +145,11 @@ inoremap <silent><expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
 
-" 对大文件（大于16MB）的设置
+" 对大文件的设置
 " 取消语法高亮
 " 取消折叠
 " 取消自动换行
-autocmd BufReadPre * if getfsize(bufname('%')) > 16*1024*1024
+autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | syntax off
     \ | setlocal nofoldenable
     \ | setlocal nowrap
