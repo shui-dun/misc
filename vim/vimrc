@@ -157,6 +157,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 自动括号配对
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " copilot配置
