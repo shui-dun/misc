@@ -69,7 +69,7 @@ function! DetectIndent()
     endfor
 endfunction
 " 只针对小文件进行缩进检测
-autocmd BufReadPre * if getfsize(bufname('%')) < 32*1024*1024 | call DetectIndent() | endif
+autocmd BufReadPost * if getfsize(bufname('%')) < 32*1024*1024 | call DetectIndent() | endif
 " 可视化tab等特殊字符
 set list
 set listchars=tab:>-,trail:.
