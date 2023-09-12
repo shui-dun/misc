@@ -136,7 +136,8 @@ inoremap ( (<c-g>u
 inoremap [ [<c-g>u
 inoremap = =<c-g>u
 inoremap <space> <space><c-g>u
-inoremap <CR> <CR><c-g>u
+" 回车应用补全
+inoremap <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
 
@@ -213,8 +214,16 @@ set nowritebackup
 set updatetime=300
 set signcolumn=no
 " 使用回车补全，使用ctrl+n/p选择
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! MyEnterMapping()
+  if coc#pum#visible()
+    return coc#pum#confirm()
+  elseif pumvisible()
+    return "\<C-y>"
+  else
+    return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  endif
+endfunction
+inoremap <silent><expr> <CR> MyEnterMapping()
 " navigate diagnostics
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <silent> g] <Plug>(coc-diagnostic-next)
