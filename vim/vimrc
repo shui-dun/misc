@@ -2,6 +2,8 @@
 let mapleader="\<Space>"
 " 显示行号
 set number
+" 设置检测文件编码的顺序
+set fileencodings=utf-8,gb2312,gbk
 " 语法折叠
 set foldmethod=indent
 " 默认内容都是展开的
@@ -146,12 +148,9 @@ inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
 
 " 对大文件的设置
-" 取消语法高亮
-" 取消折叠
-" 取消自动换行
 autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | syntax off
-    \ | setlocal nofoldenable
+    \ | setlocal foldmethod=manual
     \ | setlocal nowrap
     \ | endif
 
@@ -359,5 +358,7 @@ nnoremap <leader>oo :CocStart<CR>
 " " 可视模式下tab和shift+tab缩进和反缩进
 " vnoremap <Tab> >gv
 " vnoremap <S-Tab> <gv
-" " 打开explorer.exe快捷键
-" nnoremap <leader>E :!explorer %:h<CR>
+" " 打开explorer.exe快捷键（其中start是为了实现异步）
+" nnoremap <leader>E :!start explorer %:h<CR>
+" " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
+" nnoremap <leader>T :!start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
