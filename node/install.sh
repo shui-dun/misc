@@ -20,6 +20,6 @@ sudo rm -f /opt/node.tar.xz
 
 # 为bash和zsh分别设置环境变量
 # /etc/profile是bash会执行的，但是zsh不会
-sudo echo 'export PATH=/opt/node/bin:$PATH' >> /etc/profile
+echo 'export PATH=/opt/node/bin:$PATH' | sudo tee -a /etc/profile > /dev/null
 sudo mkdir -p /etc/zsh
-sudo echo 'export PATH=/opt/node/bin:$PATH' >> /etc/zsh/zshrc
+echo 'export PATH=/opt/node/bin:$PATH' | sudo tee -a /etc/zsh/zshrc > /dev/null

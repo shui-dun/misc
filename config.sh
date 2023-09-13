@@ -1,5 +1,6 @@
 #!/bin/bash
 
+bash $(dirname $0)/environment/install.sh
 # 应该先配置apt，因为后面的安装会用到apt
 bash $(dirname $0)/apt/install.sh
 sudo apt update
