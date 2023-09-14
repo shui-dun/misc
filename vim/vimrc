@@ -200,7 +200,7 @@ let g:EasyMotion_smartcase = 1
 " 设置根据字符搜索的快捷键为s
 map s <Plug>(easymotion-s)
 " 设置行跳转的快捷键
-map <leader>l <Plug>(easymotion-bd-jk)
+map t <Plug>(easymotion-bd-jk)
 
 " nerdcommenter配置
 " 禁用默认的快捷键
