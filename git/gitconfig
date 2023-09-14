@@ -8,9 +8,19 @@
 	quotepath = false
 	ignorecase = false
 	editor = vim
+	# 如果是Windows的git，会使用git bash自带的vim（因为git bash中的PATH首先包含了git bash自带的vim），需要指定完整路径才能使用外部vim，如下：
+	# editor = D:/Vim/vim90/gvim.exe
 [gui]
 	encoding = utf-8
 [credential]
 	helper = store
-#[http]
+
+# 代理设置
+# [http]
 # 	proxy = http://127.0.0.1:1081
+
+# windows下的difftool设置（同样因为git bash不读取外部vim，所以需要指定完整路径）
+# [diff]
+# 	tool = vimdiff
+# [difftool "vimdiff"]
+# 	cmd = /d/Vim/vim90/gvim.exe -d "$LOCAL" "$REMOTE"
