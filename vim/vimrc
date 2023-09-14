@@ -345,6 +345,20 @@ nnoremap <leader>oo :CocStart<CR>
 " nnoremap <S-Right> vl
 " inoremap <S-Right> <Esc><Right>vl
 " vnoremap <S-Right> l
+" " ctrl+left向左移动一个单词
+" nnoremap <C-Left> b
+" vnoremap <C-Left> b
+" " ctrl+right向右移动一个单词
+" nnoremap <C-Right> w
+" vnoremap <C-Right> w
+" " shif+ctrl+left向左移动一个单词
+" nnoremap <S-C-Left> vb
+" inoremap <S-C-Left> <Esc>vb
+" vnoremap <S-C-Left> b
+" " shif+ctrl+right向右移动一个单词
+" nnoremap <S-C-Right> vw
+" inoremap <S-C-Right> <Esc><Right>vw
+" vnoremap <S-C-Right> w
 " " 退格键删除
 " nnoremap <BS> "_X
 " vnoremap <BS> "_x
