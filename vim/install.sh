@@ -11,3 +11,5 @@ cp $(dirname "$0")/vimrc ~/.vimrc
 # 安装vim插件管理器
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# 创建~/.vim/swap文件夹
+mkdir -p ~/.vim/swap

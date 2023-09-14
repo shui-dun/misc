@@ -1,5 +1,7 @@
 " 设置前缀键（leader键）为空格
 let mapleader="\<Space>"
+" 设置swp文件位置
+set directory=~/.vim/swap/
 " 显示行号
 set number
 " 设置检测文件编码的顺序
@@ -174,6 +176,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" git集成
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " copilot配置
