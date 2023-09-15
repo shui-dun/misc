@@ -296,7 +296,7 @@ nnoremap <leader>oo :CocStart<CR>
 " " ctrl+v粘贴
 " nnoremap <C-v> "+p
 " vnoremap <C-v> "+p
-" inoremap <C-v> <C-r><C-o>+
+" inoremap <C-v> <C-o>"+p
 " " ctrl+x剪切
 " vnoremap <C-x> "+d
 " " ctrl+z撤销
