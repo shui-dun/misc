@@ -266,6 +266,8 @@ nnoremap <leader>oo :CocStart<CR>
 
 
 " windows下gvim的配置
+" " 禁止swap文件（因为本机不像ssh存在断连风险）
+" set noswapfile
 " " 设置gui下的字体
 " " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
 " set guifont=Consolas-with-Yahei:h13
