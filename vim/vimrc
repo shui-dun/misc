@@ -199,6 +199,7 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 " 设置根据字符搜索的快捷键为s
 map s <Plug>(easymotion-s)
+map f <Plug>(easymotion-sl)
 " 设置行跳转的快捷键
 map t <Plug>(easymotion-bd-jk)
 
