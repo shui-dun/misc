@@ -1,7 +1,8 @@
 " 设置前缀键（leader键）为空格
 let mapleader="\<Space>"
-set statusline=%Y\ %{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"\"}\ %{&ff}\ [%l,%v]\ %p%%\ %LL%=\ %m%r%h%w\ %F
-set laststatus=2
+" 显示ruler
+set ruler
+set rulerformat=%30(%{&fileformat}\|%{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"\"}\ %l,%c%V\ %LL%)
 " 显示行号
 set number
 " 设置检测文件编码的顺序
@@ -307,7 +308,7 @@ nnoremap <leader>oo :CocStart<CR>
 " " ctrl+v粘贴
 " nnoremap <C-v> "+p
 " vnoremap <C-v> "+p
-" inoremap <C-v> <C-o>"+p
+" inoremap <C-v> <Esc>"+pa
 " " ctrl+x剪切
 " vnoremap <C-x> "+d
 " " ctrl+z撤销
