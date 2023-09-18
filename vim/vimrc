@@ -177,6 +177,10 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" " markdown预览
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" " markdown粘贴图片
+" Plug 'ferrine/md-img-paste.vim'
 call plug#end()
 
 " copilot配置
@@ -279,6 +283,13 @@ let g:coc_start_at_startup=0
 " 手动启动coc
 nnoremap <leader>oo :CocStart<CR>
 
+" " md-img-paste相关配置
+" " 设置默认储存文件夹
+" let g:mdip_imgdir = 'assets'
+" " 设置默认图片名称
+" let g:mdip_imgname = 'image'
+" " 设置快捷键
+" autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>
 
 " windows下gvim的配置
 if has('win32') || has('win64')
