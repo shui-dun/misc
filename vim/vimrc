@@ -278,115 +278,117 @@ nnoremap <leader>oo :CocStart<CR>
 
 
 " windows下gvim的配置
-" " 禁止swap文件（因为本机不像ssh存在断连风险）
-" set noswapfile
-" " 设置gui下的字体
-" " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
-" set guifont=Consolas-with-Yahei:h13
-" " 修复不能退格的bug
-" set backspace=indent,eol,start
-" " 暗色主题
-" colorscheme desert
-" " 删除菜单栏
-" set guioptions-=m
-" " 删除工具栏
-" set guioptions-=T
-" " 添加右侧垂直滚动条
-" set guioptions+=r
-" " 删除左侧水平滚动条
-" set guioptions-=L
-" " 删除底部状态栏
-" set guioptions-=b
-" " 启动时最大化
-" au GUIEnter * simalt ~x
-" " 禁止光标闪烁
-" set guicursor+=a:blinkon0
-" " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
-" let g:fzf_preview_window='right:0'
-" " ctrl+c复制
-" vnoremap <C-c> "+y
-" " ctrl+v粘贴
-" nnoremap <C-v> "+p
-" vnoremap <C-v> "+p
-" inoremap <C-v> <Esc>"+pa
-" " ctrl+x剪切
-" vnoremap <C-x> "+d
-" " ctrl+z撤销
-" nnoremap <C-z> u
-" " ctrl+o是代表临时进入普通模式，执行完命令后自动回到插入模式
-" inoremap <C-z> <C-o>u
-" vnoremap <C-z> <Esc>u
-" " ctrl+r重做
-" inoremap <C-r> <C-o><C-r>
-" vnoremap <C-r> <Esc><C-r>
-" " ctrl+a全选
-" nnoremap <C-a> ggVG
-" inoremap <C-a> <Esc>ggVG
-" vnoremap <C-a> <Esc>ggVG
-" " ctrl+s保存
-" nnoremap <C-s> :w<CR>
-" inoremap <C-s> <Esc>:w<CR>a
-" vnoremap <C-s> <Esc>:w<CR>
-" " shift+home到行首
-" nnoremap <S-Home> v^
-" inoremap <S-Home> <Esc>v^
-" vnoremap <S-Home> ^
-" " shift+end到行尾
-" nnoremap <S-End> v$
-" inoremap <S-End> <Esc><Right>v$
-" vnoremap <S-End> $
-" " shift+pageup向上翻页
-" nnoremap <S-PageUp> v10k
-" inoremap <S-PageUp> <Esc>v10k
-" vnoremap <S-PageUp> 10k
-" " shift+pagedown向下翻页
-" nnoremap <S-PageDown> v10j
-" inoremap <S-PageDown> <Esc><Right>v10j
-" vnoremap <S-PageDown> 10j
-" " shift+up向上移动
-" nnoremap <S-Up> vk
-" inoremap <S-Up> <Esc>vk
-" vnoremap <S-Up> k
-" " shift+down向下移动
-" nnoremap <S-Down> vj
-" inoremap <S-Down> <Esc><Right>vj
-" vnoremap <S-Down> j
-" " shift+left向左移动
-" nnoremap <S-Left> vh
-" inoremap <S-Left> <Esc>vh
-" vnoremap <S-Left> h
-" " shift+right向右移动
-" nnoremap <S-Right> vl
-" inoremap <S-Right> <Esc><Right>vl
-" vnoremap <S-Right> l
-" " ctrl+left向左移动一个单词
-" nnoremap <C-Left> b
-" vnoremap <C-Left> b
-" " ctrl+right向右移动一个单词
-" nnoremap <C-Right> w
-" vnoremap <C-Right> w
-" " shif+ctrl+left向左移动一个单词
-" nnoremap <S-C-Left> vb
-" inoremap <S-C-Left> <Esc>vb
-" vnoremap <S-C-Left> b
-" " shif+ctrl+right向右移动一个单词
-" nnoremap <S-C-Right> vw
-" inoremap <S-C-Right> <Esc><Right>vw
-" vnoremap <S-C-Right> w
-" " 退格键删除
-" nnoremap <BS> "_X
-" vnoremap <BS> "_x
-" " 删除键删除而非剪切
-" nnoremap <Del> "_x
-" vnoremap <Del> "_x
-" " 使用ctrl+/toggle注释
-" nnoremap <C-/> V<Plug>NERDCommenterToggle
-" inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
-" vnoremap <C-/> V<Plug>NERDCommenterToggle
-" " 可视模式下tab和shift+tab缩进和反缩进
-" vnoremap <Tab> >gv
-" vnoremap <S-Tab> <gv
-" " 打开explorer.exe快捷键（其中start是为了实现异步）
-" nnoremap <leader>E :!start explorer %:h<CR>
-" " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
-" nnoremap <leader>T :!start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
+if has('win32') || has('win64')
+    " 禁止swap文件（因为本机不像ssh存在断连风险）
+    set noswapfile
+    " 设置gui下的字体
+    " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
+    set guifont=Consolas-with-Yahei:h13
+    " 修复不能退格的bug
+    set backspace=indent,eol,start
+    " 暗色主题
+    colorscheme desert
+    " 删除菜单栏
+    set guioptions-=m
+    " 删除工具栏
+    set guioptions-=T
+    " 添加右侧垂直滚动条
+    set guioptions+=r
+    " 删除左侧水平滚动条
+    set guioptions-=L
+    " 删除底部状态栏
+    set guioptions-=b
+    " 启动时最大化
+    au GUIEnter * simalt ~x
+    " 禁止光标闪烁
+    set guicursor+=a:blinkon0
+    " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
+    let g:fzf_preview_window='right:0'
+    " ctrl+c复制
+    vnoremap <C-c> "+y
+    " ctrl+v粘贴
+    nnoremap <C-v> "+p
+    vnoremap <C-v> "+p
+    inoremap <C-v> <Esc>"+pa
+    " ctrl+x剪切
+    vnoremap <C-x> "+d
+    " ctrl+z撤销
+    nnoremap <C-z> u
+    " ctrl+o是代表临时进入普通模式，执行完命令后自动回到插入模式
+    inoremap <C-z> <C-o>u
+    vnoremap <C-z> <Esc>u
+    " ctrl+r重做
+    inoremap <C-r> <C-o><C-r>
+    vnoremap <C-r> <Esc><C-r>
+    " ctrl+a全选
+    nnoremap <C-a> ggVG
+    inoremap <C-a> <Esc>ggVG
+    vnoremap <C-a> <Esc>ggVG
+    " ctrl+s保存
+    nnoremap <C-s> :w<CR>
+    inoremap <C-s> <Esc>:w<CR>a
+    vnoremap <C-s> <Esc>:w<CR>
+    " shift+home到行首
+    nnoremap <S-Home> v^
+    inoremap <S-Home> <Esc>v^
+    vnoremap <S-Home> ^
+    " shift+end到行尾
+    nnoremap <S-End> v$
+    inoremap <S-End> <Esc><Right>v$
+    vnoremap <S-End> $
+    " shift+pageup向上翻页
+    nnoremap <S-PageUp> v10k
+    inoremap <S-PageUp> <Esc>v10k
+    vnoremap <S-PageUp> 10k
+    " shift+pagedown向下翻页
+    nnoremap <S-PageDown> v10j
+    inoremap <S-PageDown> <Esc><Right>v10j
+    vnoremap <S-PageDown> 10j
+    " shift+up向上移动
+    nnoremap <S-Up> vk
+    inoremap <S-Up> <Esc>vk
+    vnoremap <S-Up> k
+    " shift+down向下移动
+    nnoremap <S-Down> vj
+    inoremap <S-Down> <Esc><Right>vj
+    vnoremap <S-Down> j
+    " shift+left向左移动
+    nnoremap <S-Left> vh
+    inoremap <S-Left> <Esc>vh
+    vnoremap <S-Left> h
+    " shift+right向右移动
+    nnoremap <S-Right> vl
+    inoremap <S-Right> <Esc><Right>vl
+    vnoremap <S-Right> l
+    " ctrl+left向左移动一个单词
+    nnoremap <C-Left> b
+    vnoremap <C-Left> b
+    " ctrl+right向右移动一个单词
+    nnoremap <C-Right> w
+    vnoremap <C-Right> w
+    " shif+ctrl+left向左移动一个单词
+    nnoremap <S-C-Left> vb
+    inoremap <S-C-Left> <Esc>vb
+    vnoremap <S-C-Left> b
+    " shif+ctrl+right向右移动一个单词
+    nnoremap <S-C-Right> vw
+    inoremap <S-C-Right> <Esc><Right>vw
+    vnoremap <S-C-Right> w
+    " 退格键删除
+    nnoremap <BS> "_X
+    vnoremap <BS> "_x
+    " 删除键删除而非剪切
+    nnoremap <Del> "_x
+    vnoremap <Del> "_x
+    " 使用ctrl+/toggle注释
+    nnoremap <C-/> V<Plug>NERDCommenterToggle
+    inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
+    vnoremap <C-/> V<Plug>NERDCommenterToggle
+    " 可视模式下tab和shift+tab缩进和反缩进
+    vnoremap <Tab> >gv
+    vnoremap <S-Tab> <gv
+    " 打开explorer.exe快捷键（其中start是为了实现异步）
+    nnoremap <leader>E :!start explorer %:h<CR>
+    " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
+    nnoremap <leader>T :!start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
+endif
