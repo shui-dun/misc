@@ -230,7 +230,10 @@ au FileType python let g:NERDSpaceDelims = 0
 let g:NERDDefaultAlign = 'left'
 
 " tagbar配置
+" 设置tagbar的快捷键
 nnoremap <leader>b :TagbarToggle<CR>
+" 阻止'press ENTER to continue'的出现
+" let g:tagbar_silent = 1
 
 " coc.nvim配置
 set nobackup
