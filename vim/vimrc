@@ -1,6 +1,6 @@
 " 设置前缀键（leader键）为空格
 let mapleader="\<Space>"
-set statusline=%m%r%h%w%=\ [ft=%Y]\ %{\"[fenc=\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"]\"}\ [ff=%{&ff}]\ [hex=%02.2B]\ [pos=%04l,%04v][%p%%]\ [len=%L]\ %F
+set statusline=%Y\ %{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"\"}\ %{&ff}\ [%l,%v]\ %p%%\ %LL%=\ %m%r%h%w\ %F
 set laststatus=2
 " 显示行号
 set number
