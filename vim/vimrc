@@ -308,8 +308,8 @@ if has('win32') || has('win64')
     set guifont=Consolas-with-Yahei:h13
     " 修复不能退格的bug
     set backspace=indent,eol,start
-    " 暗色主题
-    colorscheme desert
+    " 主题
+    colorscheme morning
     " 删除菜单栏
     set guioptions-=m
     " 删除工具栏
