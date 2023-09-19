@@ -160,7 +160,8 @@ inoremap <space> <space><c-g>u
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
-
+" 增强diff
+set diffopt+=algorithm:histogram,indent-heuristic
 " 对大文件的设置
 autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | syntax off
