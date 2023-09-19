@@ -38,6 +38,17 @@ set hlsearch
 " 可视模式下搜索，自动搜索选中的文本
 vnoremap / y/\V<C-R>"<CR>
 vnoremap <silent> * :<C-u>call VisualSelection('f')<CR>/<C-R>=@/<CR><CR>
+" 将?映射到使用列表展示全部搜索结果
+function! SearchAndListResults()
+  " 首先，获取之前正在搜索的单词，也就是@/的值
+  let search_word = @/
+  " silent表示不显示'press enter to continue'这种命令输出
+  " vimgrep表示使用列表展示搜索结果
+  " copen表示打开搜索结果列表（为什么vim不能自动弹出列表呢？很不人性化）
+  let cmd = "silent vimgrep /" . search_word . "/ % | copen"
+  execute cmd
+endfunction
+nnoremap ? :call SearchAndListResults()<CR>
 " 按F12切换粘贴模式，避免粘贴时自动缩进，以及tab被转化为空格
 set pastetoggle=<F12>
 " 每行的缩进值和上一行相等
@@ -194,6 +205,14 @@ nnoremap <leader>h :History:<CR>
 nnoremap <leader>f :History<CR>
 " leader+t打开当前文件的标签（:BTags）
 nnoremap <leader>t :BTags<CR>
+" leader+F打开文件搜索（:Files）
+nnoremap <leader>F :Files<CR>
+" leader+b打开缓冲区列表（:Buffers）
+nnoremap <leader>b :Buffers<CR>
+" leader+g打开rg搜索（:Rg）
+nnoremap <leader>g :Rg<CR>
+" leader+G打开ag搜索（:Ag）
+nnoremap <leader>G :Ag<CR>
 
 " startify配置
 let g:startify_custom_header = [
@@ -220,8 +239,8 @@ let g:NERDCreateDefaultMappings = 0
 " 检查所有选定的行是否已被注释（只要有一行没有被注释，就添加注释而非删除注释）
 let g:NERDToggleCheckAllLines = 1
 " 设置toggle注释的快捷键
-nnoremap <leader>c V<Plug>NERDCommenterToggle
-vnoremap <leader>c V<Plug>NERDCommenterToggle
+nnoremap <leader>/ V<Plug>NERDCommenterToggle
+vnoremap <leader>/ V<Plug>NERDCommenterToggle
 " 注释之后加一个空格
 let g:NERDSpaceDelims = 1
 " python自动会多加一个空格
@@ -231,7 +250,7 @@ let g:NERDDefaultAlign = 'left'
 
 " tagbar配置
 " 设置tagbar的快捷键
-nnoremap <leader>b :TagbarToggle<CR>
+nnoremap <leader>s :TagbarToggle<CR>
 " 阻止'press ENTER to continue'的出现
 " let g:tagbar_silent = 1
 
@@ -260,7 +279,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " show documentation in preview window
-nnoremap <silent> <leader>od :call ShowDocumentation()<CR>
+nnoremap <silent> <leader>cd :call ShowDocumentation()<CR>
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
@@ -269,15 +288,15 @@ endfunction
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming
-nmap <leader>or <Plug>(coc-rename)
+nmap <leader>cr <Plug>(coc-rename)
 " Formatting selected code
-xmap <leader>of  <Plug>(coc-format-selected)
+xmap <leader>cf  <Plug>(coc-format-selected)
 " Applying code actions to the selected code block
-nmap <leader>oa  <Plug>(coc-codeaction-cursor)
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
 " 默认禁止启动coc（太占内存了）
 let g:coc_start_at_startup=0
 " 手动启动coc
-nnoremap <leader>oo :CocStart<CR>
+nnoremap <leader>cc :CocStart<CR>
 
 
 " windows下gvim的配置
