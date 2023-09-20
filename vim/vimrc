@@ -330,8 +330,6 @@ if has('gui_running') && (has('win32') || has('win64'))
     au GUIEnter * simalt ~x
     " 禁止光标闪烁
     set guicursor+=a:blinkon0
-    " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
-    let g:fzf_preview_window='right:0'
     " ctrl+c复制
     vnoremap <C-c> "+y
     " ctrl+v粘贴
@@ -419,4 +417,9 @@ if has('gui_running') && (has('win32') || has('win64'))
     nnoremap <leader>E :!start explorer %:h<CR>
     " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
     nnoremap <leader>T :!start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
+
+    " 插件相关配置
+    " fzf配置
+    " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
+    let g:fzf_preview_window='right:0'
 endif
