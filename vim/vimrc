@@ -40,13 +40,13 @@ vnoremap / y/\V<C-R>"<CR>
 vnoremap <silent> * :<C-u>call VisualSelection('f')<CR>/<C-R>=@/<CR><CR>
 " 将?映射到使用列表展示全部搜索结果
 function! SearchAndListResults()
-  " 首先，获取之前正在搜索的单词，也就是@/的值
-  let search_word = @/
-  " silent表示不显示'press enter to continue'这种命令输出
-  " vimgrep表示使用列表展示搜索结果
-  " copen表示打开搜索结果列表（为什么vim不能自动弹出列表呢？很不人性化）
-  let cmd = "silent vimgrep /" . search_word . "/ % | copen"
-  execute cmd
+    " 首先，获取之前正在搜索的单词，也就是@/的值
+    let search_word = @/
+    " silent表示不显示'press enter to continue'这种命令输出
+    " vimgrep表示使用列表展示搜索结果
+    " copen表示打开搜索结果列表（为什么vim不能自动弹出列表呢？很不人性化）
+    let cmd = "silent vimgrep /" . search_word . "/ % | copen"
+    execute cmd
 endfunction
 nnoremap ? :call SearchAndListResults()<CR>
 " 按F12切换粘贴模式，避免粘贴时自动缩进，以及tab被转化为空格
@@ -160,8 +160,13 @@ inoremap <space> <space><c-g>u
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>\<C-g>u"
 inoremap ， ，<c-g>u
 inoremap 。 。<c-g>u
+" 修复不能退格的bug
+set backspace=indent,eol,start
 " 增强diff
 set diffopt+=algorithm:histogram,indent-heuristic
+" >和<自动恢复可视化区域
+vnoremap < <gv
+vnoremap > >gv
 " 对大文件的设置
 autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | syntax off
@@ -262,13 +267,13 @@ set updatetime=300
 set signcolumn=no
 " 使用回车补全，使用ctrl+n/p选择
 function! MyEnterMapping()
-  if coc#pum#visible()
-    return coc#pum#confirm()
-  elseif pumvisible()
-    return "\<C-y>"
-  else
-    return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-  endif
+    if coc#pum#visible()
+        return coc#pum#confirm()
+    elseif pumvisible()
+        return "\<C-y>"
+    else
+        return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    endif
 endfunction
 inoremap <silent><expr> <CR> MyEnterMapping()
 " navigate diagnostics
@@ -282,9 +287,9 @@ nmap <silent> gr <Plug>(coc-references)
 " show documentation in preview window
 nnoremap <silent> <leader>cd :call ShowDocumentation()<CR>
 function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  endif
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
+    endif
 endfunction
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -301,14 +306,12 @@ nnoremap <leader>cc :CocStart<CR>
 
 
 " windows下gvim的配置
-if has('win32') || has('win64')
+if has('gui_running') && (has('win32') || has('win64'))
     " 禁止swap文件（因为本机不像ssh存在断连风险）
     set noswapfile
     " 设置gui下的字体
     " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
     set guifont=Consolas-with-Yahei:h13
-    " 修复不能退格的bug
-    set backspace=indent,eol,start
     " 主题
     colorscheme morning
     " 删除菜单栏
