@@ -1,5 +1,7 @@
 " 设置前缀键（leader键）为空格
 let mapleader="\<Space>"
+" 一行太长时能显示多少就显示多少
+set display+=lastline
 " 显示ruler
 set ruler
 set rulerformat=%30(%{&fileformat}\|%{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"\"}\ %l,%c%V\ %LL%)
@@ -12,10 +14,10 @@ set foldmethod=indent
 " 默认内容都是展开的
 set foldlevelstart=99
 " L和H用来快速水平移动
-nnoremap L 80l
-vnoremap L 80l
-nnoremap H 80h
-vnoremap H 80h 
+nnoremap L g$l
+vnoremap L g$l
+nnoremap H g0h
+vnoremap H g0h
 " J和K映射到ctrl+b和ctrl+f
 nnoremap J <C-f>
 vnoremap J <C-f>
