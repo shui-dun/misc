@@ -413,10 +413,10 @@ if has('gui_running') && (has('win32') || has('win64'))
     " 可视模式下tab和shift+tab缩进和反缩进
     vnoremap <Tab> >gv
     vnoremap <S-Tab> <gv
-    " 打开explorer.exe快捷键（其中start是为了实现异步）
-    nnoremap <leader>E :!start explorer %:h<CR>
+    " 打开explorer.exe快捷键（其中start是为了实现异步，即不阻塞vim进程，而silent是防止产生“请按enter或其他命令继续”的输出）
+    nnoremap <leader>E :silent !start explorer %:h<CR>
     " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
-    nnoremap <leader>T :!start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
+    nnoremap <leader>T :silent !start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
 
     " 插件相关配置
     " fzf配置
