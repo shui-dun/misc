@@ -1,3 +1,6 @@
+" 删除space在普通和可视模式下的映射
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
 " 设置前缀键（leader键）为空格
 let mapleader="\<Space>"
 " 一行太长时能显示多少就显示多少
