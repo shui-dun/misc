@@ -197,6 +197,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" undo历史
+Plug 'mbbill/undotree'
 call plug#end()
 
 " copilot配置
@@ -307,6 +309,8 @@ let g:coc_start_at_startup=0
 " 手动启动coc
 nnoremap <leader>cc :CocStart<CR>
 
+" undotree配置
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " windows下gvim的配置
 if has('gui_running') && (has('win32') || has('win64'))
