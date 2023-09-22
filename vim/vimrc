@@ -12,10 +12,12 @@ set rulerformat=%30(%{&fileformat}\|%{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")
 set number
 " 设置检测文件编码的顺序
 set fileencodings=utf-8,gb2312,gbk
-" 语法折叠
+" indent折叠（使用语法折叠可能会影响性能，并且需要针对各种语言手动开启）
 set foldmethod=indent
 " 默认内容都是展开的
 set foldlevelstart=99
+" markdown语法折叠
+let g:markdown_folding = 1
 " L和H用来快速水平移动
 nnoremap L g$l
 vnoremap L g$l
