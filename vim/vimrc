@@ -23,11 +23,11 @@ nnoremap L g$l
 vnoremap L g$l
 nnoremap H g0h
 vnoremap H g0h
-" J和K映射到ctrl+b和ctrl+f
-nnoremap J <C-f>
-vnoremap J <C-f>
-nnoremap K <C-b>
-vnoremap K <C-b>
+" J和K快速垂直移动
+nnoremap <expr> J 'zb' . (winheight(0) * 4 / 5) . 'gjzb'
+vnoremap <expr> J 'zb' . (winheight(0) * 4 / 5) . 'gjzb'
+nnoremap <expr> K 'zt' . (winheight(0) * 4 / 5) . 'gkzt'
+vnoremap <expr> K 'zt' . (winheight(0) * 4 / 5) . 'gkzt'
 " 显示命令
 set showcmd
 " 设置保存的历史命令数目
