@@ -10,6 +10,8 @@ set ruler
 set rulerformat=%30(%{&fileformat}\|%{\"\".(\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"\"}\ %l,%c%V\ %LL%)
 " 显示行号
 set number
+" 允许在不保存当前文件时切换到另一个缓冲区
+set hidden
 " 设置检测文件编码的顺序
 set fileencodings=utf-8,gb2312,gbk
 " indent折叠（使用语法折叠可能会影响性能，并且需要针对各种语言手动开启）
