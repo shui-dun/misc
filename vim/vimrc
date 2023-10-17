@@ -118,10 +118,12 @@ set cpt=.,k,w,b
 let g:netrw_liststyle=3
 " 隐藏netrw的帮助信息
 let g:netrw_banner=0
-" 设置netrw的浏览方式为水平分割
-let g:netrw_browse_split=2
+" 设置netrw用前一个窗口打开文件
+let g:netrw_browse_split=4
 " 设置netrw的分割窗口的宽度
 let g:netrw_winsize=50
+" 在垂直分割的窗口打开
+let g:netrw_preview = 1
 " 打开netrw快捷键
 nnoremap <leader>e :Vexplore<CR>
 " 普通模式下的x和X是删除而不是剪切
