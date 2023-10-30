@@ -13,6 +13,7 @@ set number
 " 允许在不保存当前文件时切换到另一个缓冲区
 set hidden
 " 设置检测文件编码的顺序
+" 我发现对于大文件，vim解码utf-8和gb2312等编码极其慢，比解码latin这种单字符编码慢很多，但没办法
 set fileencodings=utf-8,gb2312,gbk
 " indent折叠（使用语法折叠可能会影响性能，并且需要针对各种语言手动开启）
 set foldmethod=indent
@@ -193,8 +194,10 @@ vnoremap > >gv
 " 对大文件的设置
 autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | syntax off
-    \ | setlocal foldmethod=manual
+    \ | setlocal nofoldenable
     \ | setlocal nowrap
+    \ | setlocal eventignore+=FileType
+    \ | setlocal bufhidden=unload
     \ | endif
 
 
@@ -224,8 +227,8 @@ call plug#end()
 " copilot配置
 " 补全所有文件类型
 let g:copilot_filetypes = {
-\ '*': v:true,
-\ }
+    \ '*': v:true,
+    \ }
 " 设置启用copilot的快捷键
 nnoremap <leader>p :call plug#load("copilot.vim")<CR>
 
@@ -247,18 +250,18 @@ nnoremap <leader>G :Ag<CR>
 
 " startify配置
 let g:startify_custom_header = [
-			\'    █   █  ▀  █▀▄▀█     .-. ________  ',
-			\'     █ █   █▀ █ ▀ █     |=|/_____/  \ ',
-			\'     ▀▄▀  ▄█▄ █   █     |_|_[X]_|_""_|',
-			\]
+    \'    █   █  ▀  █▀▄▀█     .-. ________  ',
+    \'     █ █   █▀ █ ▀ █     |=|/_____/  \ ',
+    \'     ▀▄▀  ▄█▄ █   █     |_|_[X]_|_""_|',
+    \]
 " 列表顺序
 let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ ]
+    \ { 'type': 'files',     'header': ['   MRU']            },
+    \ { 'type': 'sessions',  'header': ['   Sessions']       },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    \ { 'type': 'commands',  'header': ['   Commands']       },
+    \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+    \ ]
 
 " easymotion配置
 " 禁用所有默认的快捷键
