@@ -356,8 +356,8 @@ if has('gui_running') && (has('win32') || has('win64'))
     set guioptions-=m
     " 删除工具栏
     set guioptions-=T
-    " 删除右侧垂直滚动条
-    set guioptions-=r
+    " 显示右侧垂直滚动条
+    set guioptions+=r
     " 删除左侧水平滚动条
     set guioptions-=L
     " 删除底部状态栏
