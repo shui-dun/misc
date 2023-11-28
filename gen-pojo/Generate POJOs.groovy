@@ -49,6 +49,8 @@ def generate(out, className, fields, table, packageName) {
     // out.println "import lombok.Builder;"
     out.println "import lombok.Data;"
     out.println "import lombok.NoArgsConstructor;"
+    out.println "import org.springframework.lang.NonNull;"
+    out.println "import org.springframework.lang.Nullable;"
     out.println ""
     out.println "@TableName(\"" + table.getName() + "\")"
     // out.println "@Table(name = \""+table.getName() +"\")"
@@ -65,6 +67,12 @@ def generate(out, className, fields, table, packageName) {
         if (it.primary) out.println "    @TableId"
         // out.print "    @Column(name = \"${it.colName}\""; if (it.primary) out.print ", updatable = false, nullable = false"; out.println ")"
         // if (it.primary) out.println "    @GeneratedValue(strategy = GenerationType.IDENTITY)"
+        // 根据可空性添加注解
+        if (it.nullable) {
+            out.println "    @Nullable"
+        } else {
+            out.println "    @NonNull"
+        }
         out.println "    private ${it.type} ${it.name};"
     }
 
@@ -76,11 +84,13 @@ def calcFields(table) {
         def spec = Case.LOWER.apply(col.getDataType().getSpecification())
 
         def typeStr = typeMapping.find { p, t -> p.matcher(spec).find() }.value
+
         def comm = [
                 name   : javaName(col.getName(), false),
                 type   : typeStr,
                 colName: col.getName(),
-                primary: DasUtil.isPrimary(col)
+                primary: DasUtil.isPrimary(col),
+                nullable: !col.isNotNull() // 获取列的可空性
         ]
         fields += [comm]
     }
