@@ -49,7 +49,7 @@ def generate(out, className, fields, table, packageName) {
     // out.println "import lombok.Builder;"
     out.println "import lombok.Data;"
     out.println "import lombok.NoArgsConstructor;"
-    out.println "import org.springframework.lang.NonNull;"
+    // out.println "import org.springframework.lang.NonNull;"
     out.println "import org.springframework.lang.Nullable;"
     out.println ""
     out.println "@TableName(\"" + table.getName() + "\")"
@@ -71,7 +71,7 @@ def generate(out, className, fields, table, packageName) {
         if (it.nullable) {
             out.println "    @Nullable"
         } else {
-            out.println "    @NonNull"
+            // out.println "    @NonNull"
         }
         out.println "    private ${it.type} ${it.name};"
     }
