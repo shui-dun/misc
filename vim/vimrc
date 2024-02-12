@@ -149,6 +149,8 @@ com! DiffSaved call s:DiffWithSaved()
 nnoremap / /\V
 " leader+r替换，默认不使用正则表达式
 nnoremap <leader>r :.,$s/\V//gc<left><left><left><left>
+" 可视模式下leader+r替换，默认不使用正则表达式
+vnoremap <leader>r :s/\V//gc<left><left><left><left>
 " 统计字数（包含中文字符和英文单词）
 function! WordCnt() range
     let save = @z
