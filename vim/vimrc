@@ -21,25 +21,27 @@ set foldmethod=indent
 set foldlevelstart=99
 " markdown语法折叠
 let g:markdown_folding = 1
+" 快速输入自定义命令（leader键+o），我的自定义命令都是O开头
+nnoremap <leader>o :O<C-d>
 " L和H用来快速水平移动
-function! MyLMapping()
+function! OLMapping()
     if &wrap
         return "gj"
     else
         return "zL"
     endif
 endfunction
-nnoremap <expr> L MyLMapping()
-vnoremap <expr> L MyLMapping()
-function! MyHMapping()
+nnoremap <expr> L OLMapping()
+vnoremap <expr> L OLMapping()
+function! OHMapping()
     if &wrap
         return "gk"
     else
         return "zH"
     endif
 endfunction
-nnoremap <expr> H MyHMapping()
-vnoremap <expr> H MyHMapping()
+nnoremap <expr> H OHMapping()
+vnoremap <expr> H OHMapping()
 " J和K快速垂直移动
 nnoremap <expr> J (winheight(0) - 1) . 'gjzb'
 vnoremap <expr> J (winheight(0) - 1) . 'gjzb'
@@ -137,22 +139,30 @@ vnoremap X "_x
 " 让剪切板寄存器 "+ 与 "* 和匿名寄存器 "" 保持同步
 set clipboard=unnamed,unnamedplus
 " 比较当前编辑但没保存的文件和磁盘上的文件
-function! s:DiffWithSaved()
+function! s:ODiffWithSaved()
     let filetype=&ft
     diffthis
     vnew | r # | normal! 1Gdd
     diffthis
     exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
-com! DiffSaved call s:DiffWithSaved()
+com! ODiffWithSaved call s:ODiffWithSaved()
 " 搜索时默认不使用正则表达式
 nnoremap / /\V
 " leader+r替换，默认不使用正则表达式
 nnoremap <leader>r :.,$s/\V//gc<left><left><left><left>
 " 可视模式下leader+r替换，默认不使用正则表达式
 vnoremap <leader>r :s/\V//gc<left><left><left><left>
+" 常用的替换
+function! ORepLatexMathWithMdMath()
+    " 替换行内数学公式
+    %s/\v\\\(\s*(.{-1,})\s*\\\)/$\1$/g
+    " 替换块级数学公式
+    %s/\v\\\[(\_s*\_.{-1,}\_s*)\\\]/$$\1$$/g
+endfunction
+command! ORepLatexMathWithMdMath call ORepLatexMathWithMdMath()
 " 统计字数（包含中文字符和英文单词）
-function! WordCnt() range
+function! OWordCnt() range
     let save = @z
     silent exec 'normal! gv"zy'
     let text = @z
@@ -174,7 +184,7 @@ function! WordCnt() range
     echo "Count of Chinese characters is:" cc
     echo "Count of words is:" wordCount
 endfunc
-command! -range WordCnt <line1>,<line2>call WordCnt()
+command! -range OWordCnt <line1>,<line2>call OWordCnt()
 " 细粒度的undo
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
@@ -237,18 +247,25 @@ nnoremap <leader>p :call plug#load("copilot.vim")<CR>
 " fzf.vim配置
 " leader+h打开命令历史记录（:History:）
 nnoremap <leader>h :History:<CR>
+command! OHistoryCommand History:
 " leader+f打开最近文件（:History）
 nnoremap <leader>f :History<CR>
+command! OHistoryFile History
 " leader+t打开当前文件的标签（:BTags）
 nnoremap <leader>t :BTags<CR>
+command! OTagSearch BTags
 " leader+F打开文件搜索（:Files）
 nnoremap <leader>F :Files<CR>
+command! -nargs=* OFiles Files <args>
 " leader+b打开缓冲区列表（:Buffers）
 nnoremap <leader>b :Buffers<CR>
+command! OBuffers Buffers
 " leader+g打开rg搜索（:Rg）
 nnoremap <leader>g :Rg<CR>
+command! -nargs=* ORegSearch Rg <args>
 " leader+G打开ag搜索（:Ag）
 nnoremap <leader>G :Ag<CR>
+command! -nargs=* OFuzzySearch Ag <args>
 
 " startify配置
 let g:startify_custom_header = [
@@ -295,6 +312,7 @@ let g:NERDDefaultAlign = 'left'
 " tagbar配置
 " 设置tagbar的快捷键
 nnoremap <leader>s :TagbarToggle<CR>
+command! OTagbarToggle TagbarToggle
 " 阻止'press ENTER to continue'的出现
 " let g:tagbar_silent = 1
 
@@ -304,7 +322,7 @@ set nowritebackup
 set updatetime=300
 set signcolumn=no
 " 使用回车补全，使用ctrl+n/p选择
-function! MyEnterMapping()
+function! OEnterMapping()
     if coc#pum#visible()
         return coc#pum#confirm()
     elseif pumvisible()
@@ -313,17 +331,23 @@ function! MyEnterMapping()
         return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     endif
 endfunction
-inoremap <silent><expr> <CR> MyEnterMapping()
+inoremap <silent><expr> <CR> OEnterMapping()
 " navigate diagnostics
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <silent> g] <Plug>(coc-diagnostic-next)
+command! OShowDiagnostics :CocList diagnostics
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
+command! OShowDefinition execute "normal! \<Plug>(coc-definition)"
 nmap <silent> gy <Plug>(coc-type-definition)
+command! OShowTypeDefinition execute "normal! \<Plug>(coc-type-definition)"
 nmap <silent> gi <Plug>(coc-implementation)
+command! OShowImplementation execute "normal! \<Plug>(coc-implementation)"
 nmap <silent> gr <Plug>(coc-references)
+command! OShowReferences execute "normal! \<Plug>(coc-references)"
 " show documentation in preview window
 nnoremap <silent> <leader>cd :call ShowDocumentation()<CR>
+command! OShowDocumentation :call ShowDocumentation()
 function! ShowDocumentation()
     if CocAction('hasProvider', 'hover')
         call CocActionAsync('doHover')
@@ -333,17 +357,19 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming
 nmap <leader>cr <Plug>(coc-rename)
-" Formatting selected code
-xmap <leader>cf  <Plug>(coc-format-selected)
+command! ORenameSymbol execute "normal! \<Plug>(coc-rename)"
 " Applying code actions to the selected code block
 nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+command! OCodeAction execute "normal! \<Plug>(coc-codeaction-cursor)"
 " 默认禁止启动coc（太占内存了）
 let g:coc_start_at_startup=0
 " 手动启动coc
 nnoremap <leader>cc :CocStart<CR>
+command! OCocStart CocStart
 
 " undotree配置
 nnoremap <leader>u :UndotreeToggle<CR>
+command! OUndotreeToggle UndotreeToggle
 
 " windows下gvim的配置
 if has('gui_running') && (has('win32') || has('win64'))
