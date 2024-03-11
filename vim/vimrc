@@ -21,8 +21,6 @@ set foldmethod=indent
 set foldlevelstart=99
 " markdown语法折叠
 let g:markdown_folding = 1
-" 快速输入自定义命令（leader键+o），我的自定义命令都是O开头
-nnoremap <leader>o :O<C-d>
 " L和H用来快速水平移动
 function! OLMapping()
     if &wrap
@@ -266,6 +264,8 @@ command! -nargs=* ORegSearch Rg <args>
 " leader+G打开ag搜索（:Ag）
 nnoremap <leader>G :Ag<CR>
 command! -nargs=* OFuzzySearch Ag <args>
+" leader+o打开commands搜索
+nnoremap <leader>o :Commands<CR>
 
 " startify配置
 let g:startify_custom_header = [
