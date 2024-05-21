@@ -159,6 +159,20 @@ function! ORepLatexMathWithMdMath()
     %s/\v\\\[(\_s*\_.{-1,}\_s*)\\\]/$$\1$$/g
 endfunction
 command! ORepLatexMathWithMdMath call ORepLatexMathWithMdMath()
+" 在markdown的开头前面添加引用
+function! OAddQuoteToMarkdownHeaders()
+    " 遍历每一行，检测是否以# 开头，如果是，则在前面加上>
+    let lnum = 1
+    while lnum <= line('$')
+        let lineText = getline(lnum)
+        if lineText =~ '^#\+ '
+            " 替换行内容，前面加上>
+            call setline(lnum, '> ' . lineText)
+        endif
+        let lnum += 1
+    endwhile
+endfunction
+command! OAddQuoteToMarkdownHeaders call OAddQuoteToMarkdownHeaders()
 " 统计字数（包含中文字符和英文单词）
 function! OWordCnt() range
     let save = @z
