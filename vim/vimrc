@@ -161,12 +161,13 @@ endfunction
 command! ORepLatexMathWithMdMath call ORepLatexMathWithMdMath()
 " 隐藏markdown的标题
 function! OHideMarkdownHeaders()
-    " 遍历每一行，检测是否以# 开头，如果是，用``包裹
+    " 遍历每一行，检测是否以# 开头，如果是，只将#用``包裹
     let lnum = 1
     while lnum <= line('$')
         let lineText = getline(lnum)
         if lineText =~ '^#\+ '
-            call setline(lnum, '`' . lineText . '`')
+            let lineText = substitute(lineText, '^\(#\+\)\s', '`\1` ', '')
+            call setline(lnum, lineText)
         endif
         let lnum += 1
     endwhile
