@@ -165,8 +165,8 @@ function! OHideMarkdownHeaders()
     let lnum = 1
     while lnum <= line('$')
         let lineText = getline(lnum)
-        if lineText =~ '^#\+ '
-            let lineText = substitute(lineText, '^\(#\+\)\s', '`\1` ', '')
+        if lineText =~ '\v^#+\s+'
+            let lineText = substitute(lineText, '\v^(#+)\s+', '`\1` ', '')
             call setline(lnum, lineText)
         endif
         let lnum += 1
