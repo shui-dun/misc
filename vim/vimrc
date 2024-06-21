@@ -151,7 +151,7 @@ nnoremap / /\V
 nnoremap <leader>r :.,$s/\V//gc<left><left><left><left>
 " 可视模式下leader+r替换，默认不使用正则表达式
 vnoremap <leader>r :s/\V//gc<left><left><left><left>
-" 常用的替换
+" 替换数学公式风格
 function! ORepLatexMathWithMdMath()
     " 替换行内数学公式
     %s/\v\\\(\s*(.{-1,})\s*\\\)/$\1$/g
@@ -173,6 +173,13 @@ function! OHideMarkdownHeaders()
     endwhile
 endfunction
 command! OHideMarkdownHeaders call OHideMarkdownHeaders()
+" 移除markdown中的标签
+function! ORemoveTagsInMarkdown()
+    %s/\V`<ignore-until-end\/>`//g
+    %s/\v`\<todo\>`\_.{-}`\<\/todo\>`//g
+    %s/\v`\<comment\>`\_.{-}`\<\/comment\>`//g
+endfunction
+command! ORemoveTagsInMarkdown call ORemoveTagsInMarkdown()
 " 统计字数（包含中文字符和英文单词）
 function! OWordCnt() range
     let save = @z
