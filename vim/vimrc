@@ -416,11 +416,15 @@ if has('gui_running') && (has('win32') || has('win64'))
     " 禁止光标闪烁
     set guicursor+=a:blinkon0
     " ctrl+c复制
-    vnoremap <C-c> "+y
+    " 其实这里也不用写"+，因为前面已经设置剪切板同步了
+    " `>是为了复制后来到结尾
+    " 哎vim的很多默认设置都很奇怪需要改
+    vnoremap <C-c> "+y`>
     " ctrl+v粘贴
-    nnoremap <C-v> "+p
-    vnoremap <C-v> "+p
-    inoremap <C-v> <Esc>"+pa
+    " g表示粘贴后来到结尾
+    nnoremap <C-v> "+gP
+    vnoremap <C-v> "_d"+gP
+    inoremap <C-v> <Esc>"+gpi
     " ctrl+x剪切
     vnoremap <C-x> "+d
     " ctrl+z撤销
