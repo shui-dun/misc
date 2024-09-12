@@ -78,7 +78,6 @@ export BAT_PAGER="less -RFi"
 export BAT_THEME="Coldark-Dark"
 
 # 显示欢迎界面
-clear
 cat ~/.welcome
 
 # >>> end of config
