@@ -68,7 +68,7 @@ treec() {
 function lc() { # lastcommand
     clear
     last_command=$(fc -ln -1)
-    eval "$last_command" | batcat
+    eval "$last_command" | batcat -l toml
 }
 
 # bat相关配置
