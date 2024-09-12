@@ -24,6 +24,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # 与bash兼容
 setopt no_nomatch
+setopt NO_BANG_HIST
 # 禁用rm，使用trash-cli代替
 # alias rm='echo "Please use trash-cli instead."; false'
 # 终端支持256色
@@ -64,6 +65,11 @@ fdrg() {
 treec() {
     tree -C "$@" 2>/dev/null | batcat
 }
+function lc() { # lastcommand
+    clear
+    last_command=$(fc -ln -1)
+    eval "$last_command" | batcat
+}
 
 # bat相关配置
 # 设置bat忽略大小写
@@ -75,3 +81,4 @@ export BAT_THEME="Coldark-Dark"
 clear
 cat ~/.welcome
 
+# >>> end of config
