@@ -65,10 +65,12 @@ fdrg() {
 treec() {
     tree -C "$@" 2>/dev/null | batcat
 }
-function lc() { # lastcommand
-    clear
+lc() { # lastcommand
     last_command=$(fc -ln -1)
-    eval "$last_command" 2>&1 | batcat -l toml --tabs 0 # -l toml是为了实现语法高亮；--tabs 0是为了修复缩进问题，让pager来决定缩进
+    # --tabs 0是为了修复缩进问题，让pager来决定缩进
+    # -l toml是为了实现语法高亮
+    # 如果不需要语法高亮，调用lc -l txt
+    eval "$last_command" 2>&1 | batcat -l toml --tabs 0 "$@"
 }
 
 # bat相关配置
