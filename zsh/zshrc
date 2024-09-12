@@ -68,14 +68,16 @@ treec() {
 function lc() { # lastcommand
     clear
     last_command=$(fc -ln -1)
-    eval "$last_command" | batcat -l toml
+    eval "$last_command" 2>&1 | batcat -l toml --tabs 0 # -l toml是为了实现语法高亮；--tabs 0是为了修复缩进问题，让pager来决定缩进
 }
 
 # bat相关配置
-# 设置bat忽略大小写
-export BAT_PAGER="less -RFi"
+# -i 忽略大小写 -N 表示显示行号
+export BAT_PAGER="less -RFNi"
 # 设置bat主题
 export BAT_THEME="Coldark-Dark"
+# 默认style，使用plain使得跳转行号（例如100g）的行为正确
+export BAT_STYLE="plain"
 
 # 显示欢迎界面
 cat ~/.welcome
