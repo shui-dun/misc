@@ -82,7 +82,17 @@ export BAT_THEME="Coldark-Dark"
 export BAT_STYLE="plain"
 
 # ranger 相关配置
-alias r='. ranger'
+r() {
+    tempfile=$(mktemp)
+    ranger --cmd="set show_hidden true" --choosedir="$tempfile" "$@"
+    if [ -f "$tempfile" ]; then
+        dest_dir="$(cat "$tempfile")"
+        if [ -d "$dest_dir" ]; then
+            cd "$dest_dir"
+        fi
+        rm -f "$tempfile"
+    fi
+}
 
 # 显示欢迎界面
 cat ~/.welcome
