@@ -16,7 +16,7 @@ sudo apt install -y sl cowsay figlet cmatrix neofetch lolcat caca-utils
 sudo apt install -y docker docker-compose
 # 安装实用工具
 sudo apt install -y net-tools nmap trash-cli tree ssh lrzsz \
-    silversearcher-ag ripgrep fd-find duf ncdu bat
+    silversearcher-ag ripgrep fd-find duf gdu bat
 
 # zsh的安装应该尽可能的早，因为后面的配置可能会修改zsh的配置文件
 bash $(dirname $0)/zsh/install.sh
