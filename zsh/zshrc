@@ -81,6 +81,9 @@ export BAT_THEME="Coldark-Dark"
 # 默认style，使用plain使得跳转行号（例如100g）的行为正确
 export BAT_STYLE="plain"
 
+# ranger 相关配置
+alias r='. ranger'
+
 # 显示欢迎界面
 cat ~/.welcome
 
