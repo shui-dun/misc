@@ -14,4 +14,11 @@ fi
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 # zshrc中添加zoxide的初始化脚本
-echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
+ZOXIDE_INIT_CMD='eval "$(zoxide init bash)"'
+BASHRC_FILE=~/.bashrc
+
+if grep -q "$ZOXIDE_INIT_CMD" "$BASHRC_FILE"; then
+    echo "zoxide initialization already exists in $BASHRC_FILE"
+else
+    echo "$ZOXIDE_INIT_CMD" >> "$BASHRC_FILE"
+fi
