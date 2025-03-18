@@ -20,3 +20,4 @@ bash $(dirname $0)/git/install.sh
 bash $(dirname $0)/vim/install.sh
 bash $(dirname $0)/hexer/install.sh
 bash $(dirname $0)/zoxide/install.sh
+bash $(dirname $0)/fzf/install.sh
