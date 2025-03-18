@@ -2,4 +2,4 @@
 export PATH="$HOME/.local/bin:$PATH"
 
 # fd 相关配置
-alias fd='fdfixxnd'
+alias fd='fdfind'
