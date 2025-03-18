@@ -1,8 +1,3 @@
-" 删除space在普通和可视模式下的映射
-nnoremap <Space> <Nop>
-vnoremap <Space> <Nop>
-" 设置前缀键（leader键）为空格
-let mapleader="\<Space>"
 " 一行太长时能显示多少就显示多少
 set display+=lastline
 " 显示ruler
@@ -52,7 +47,6 @@ set history=1000
 " 输入命令时按下tab键自动补全
 set wildmenu
 set wildmode=longest:full,full
-set wildoptions=pum
 " 搜索时忽略大小写
 set ignorecase
 " 如果搜索中有一个或以上的大写字母，则不忽略大小写
@@ -126,7 +120,7 @@ let g:netrw_winsize=50
 " 在垂直分割的窗口打开
 let g:netrw_preview = 1
 " 打开netrw快捷键
-nnoremap <leader>e :Vexplore<CR>
+com! Oexplore Vexplore
 " 普通模式下的x和X是删除而不是剪切
 nnoremap x "_x
 nnoremap X "_X
@@ -147,63 +141,9 @@ endfunction
 com! ODiffWithSaved call s:ODiffWithSaved()
 " 搜索时默认不使用正则表达式
 nnoremap / /\V
-" leader+r替换，默认不使用正则表达式
-nnoremap <leader>r :.,$s/\V//gc<left><left><left><left>
-" 可视模式下leader+r替换，默认不使用正则表达式
-vnoremap <leader>r :s/\V//gc<left><left><left><left>
-" 替换数学公式风格
-function! ORepLatexMathWithMdMath()
-    " 替换行内数学公式
-    %s/\v\\\(\s*(.{-1,})\s*\\\)/$\1$/g
-    " 替换块级数学公式
-    %s/\v\\\[(\_s*\_.{-1,}\_s*)\\\]/$$\1$$/g
-endfunction
-command! ORepLatexMathWithMdMath call ORepLatexMathWithMdMath()
-" 隐藏markdown的标题
-function! OHideMarkdownHeaders()
-    " 遍历每一行，检测是否以# 开头，如果是，只将#用``包裹
-    let lnum = 1
-    while lnum <= line('$')
-        let lineText = getline(lnum)
-        if lineText =~ '\v^#+\s+'
-            let lineText = substitute(lineText, '\v^(#+)\s+', '`\1` ', '')
-            call setline(lnum, lineText)
-        endif
-        let lnum += 1
-    endwhile
-endfunction
-command! OHideMarkdownHeaders call OHideMarkdownHeaders()
-" 移除markdown中的标签
-function! ORemoveTagsInMarkdown()
-    %s/\V`<ignore-until-end\/>`//g
-    %s/\v`\<todo\>`\_.{-}`\<\/todo\>`//g
-    %s/\v`\<comment\>`\_.{-}`\<\/comment\>`//g
-endfunction
-command! ORemoveTagsInMarkdown call ORemoveTagsInMarkdown()
-" 统计字数（包含中文字符和英文单词）
-function! OWordCnt() range
-    let save = @z
-    silent exec 'normal! gv"zy'
-    let text = @z
-    let @z = save
-    silent exec 'normal! gv'
-
-    " 统计中文字符数目
-    let cc = 0
-    for char in split(text, '\zs')
-        if char2nr(char) >= 0x2000
-            let cc += 1
-        endif
-    endfor
-
-    " 移除选中文本中的中文字符（但这一步太耗时了）
-    " let engText = substitute(text, '[\u4e00-\u9fff]', '', 'g')
-    " 统计单词数目（按照空格和各种标点符号以及换行符分割）
-    let wordCount = len(split(text, '[[:blank:][:punct:][:cntrl:]]\+'))
-    echo "Count of Chinese characters is:" cc
-    echo "Count of words is:" wordCount
-endfunc
-command! -range OWordCnt <line1>,<line2>call OWordCnt()
+" 替换，默认不使用正则表达式
+nnoremap <C-h> :.,$s/\V//gc<left><left><left><left>
+vnoremap <C-h> :s/\V//gc<left><left><left><left>
 " 细粒度的undo
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
@@ -231,62 +171,20 @@ autocmd BufReadPre * if getfsize(bufname('%')) > 32*1024*1024
     \ | setlocal bufhidden=unload
     \ | endif
 
+" 块编辑，由于ctrl+v和粘贴冲突，换个快捷键
+nnoremap <C-q> <C-v>
 
 " 插件管理
 call plug#begin()
-" copilot补全，默认不启用
-Plug 'github/copilot.vim', { 'on': [] }
 " 常见语言的词典
 Plug 'skywind3000/vim-dict'
-" 模糊查找
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 " vim初始页
 Plug 'mhinz/vim-startify'
 " 快速跳转
 Plug 'easymotion/vim-easymotion'
-" 注释
-Plug 'preservim/nerdcommenter'
-" 查看文件tag
-Plug 'preservim/tagbar'
-" 代码补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" undo历史
-Plug 'mbbill/undotree'
+" 代码注释
+Plug 'tpope/vim-commentary'
 call plug#end()
-
-" copilot配置
-" 补全所有文件类型
-let g:copilot_filetypes = {
-    \ '*': v:true,
-    \ }
-" 设置启用copilot的快捷键
-nnoremap <leader>p :call plug#load("copilot.vim")<CR>
-
-" fzf.vim配置
-" leader+h打开命令历史记录（:History:）
-nnoremap <leader>h :History:<CR>
-command! OHistoryCommand History:
-" leader+f打开最近文件（:History）
-nnoremap <leader>f :History<CR>
-command! OHistoryFile History
-" leader+t打开当前文件的标签（:BTags）
-nnoremap <leader>t :BTags<CR>
-command! OTagSearch BTags
-" leader+F打开文件搜索（:Files）
-nnoremap <leader>F :Files<CR>
-command! -nargs=* OFiles Files <args>
-" leader+b打开缓冲区列表（:Buffers）
-nnoremap <leader>b :Buffers<CR>
-command! OBuffers Buffers
-" leader+g打开rg搜索（:Rg）
-nnoremap <leader>g :Rg<CR>
-command! -nargs=* ORegSearch Rg <args>
-" leader+G打开ag搜索（:Ag）
-nnoremap <leader>G :Ag<CR>
-command! -nargs=* OFuzzySearch Ag <args>
-" leader+o打开commands搜索
-nnoremap <leader>o :Commands<CR>
 
 " startify配置
 let g:startify_custom_header = [
@@ -315,200 +213,5 @@ map f <Plug>(easymotion-sl)
 " 设置行跳转的快捷键
 map t <Plug>(easymotion-bd-jk)
 
-" nerdcommenter配置
-" 禁用默认的快捷键
-let g:NERDCreateDefaultMappings = 0
-" 检查所有选定的行是否已被注释（只要有一行没有被注释，就添加注释而非删除注释）
-let g:NERDToggleCheckAllLines = 1
-" 设置toggle注释的快捷键
-nnoremap <leader>/ V<Plug>NERDCommenterToggle
-vnoremap <leader>/ V<Plug>NERDCommenterToggle
-" 注释之后加一个空格
-let g:NERDSpaceDelims = 1
-" python自动会多加一个空格
-au FileType python let g:NERDSpaceDelims = 0
-" 设置注释的对齐方式是左对齐
-let g:NERDDefaultAlign = 'left'
-
-" tagbar配置
-" 设置tagbar的快捷键
-nnoremap <leader>s :TagbarToggle<CR>
-command! OTagbarToggle TagbarToggle
-" 阻止'press ENTER to continue'的出现
-" let g:tagbar_silent = 1
-
-" coc.nvim配置
-set nobackup
-set nowritebackup
-set updatetime=300
-set signcolumn=no
-" 使用回车补全，使用ctrl+n/p选择
-function! OEnterMapping()
-    if coc#pum#visible()
-        return coc#pum#confirm()
-    elseif pumvisible()
-        return "\<C-y>"
-    else
-        return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-    endif
-endfunction
-inoremap <silent><expr> <CR> OEnterMapping()
-" navigate diagnostics
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-command! OShowDiagnostics :CocList diagnostics
-" GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-command! OShowDefinition execute "normal! \<Plug>(coc-definition)"
-nmap <silent> gy <Plug>(coc-type-definition)
-command! OShowTypeDefinition execute "normal! \<Plug>(coc-type-definition)"
-nmap <silent> gi <Plug>(coc-implementation)
-command! OShowImplementation execute "normal! \<Plug>(coc-implementation)"
-nmap <silent> gr <Plug>(coc-references)
-command! OShowReferences execute "normal! \<Plug>(coc-references)"
-" show documentation in preview window
-nnoremap <silent> <leader>cd :call ShowDocumentation()<CR>
-command! OShowDocumentation :call ShowDocumentation()
-function! ShowDocumentation()
-    if CocAction('hasProvider', 'hover')
-        call CocActionAsync('doHover')
-    endif
-endfunction
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Symbol renaming
-nmap <leader>cr <Plug>(coc-rename)
-command! ORenameSymbol execute "normal! \<Plug>(coc-rename)"
-" Applying code actions to the selected code block
-nmap <leader>ca  <Plug>(coc-codeaction-cursor)
-command! OCodeAction execute "normal! \<Plug>(coc-codeaction-cursor)"
-" 默认禁止启动coc（太占内存了）
-let g:coc_start_at_startup=0
-" 手动启动coc
-nnoremap <leader>cc :CocStart<CR>
-command! OCocStart CocStart
-
-" undotree配置
-nnoremap <leader>u :UndotreeToggle<CR>
-command! OUndotreeToggle UndotreeToggle
-
-" windows下gvim的配置
-if has('gui_running') && (has('win32') || has('win64'))
-    " 禁止swap文件（因为本机不像ssh存在断连风险）
-    set noswapfile
-    " 设置gui下的字体
-    " 这个字体需要去https://github.com/crvdgc/Consolas-with-Yahei安装
-    set guifont=Consolas-with-Yahei:h13
-    " 主题
-    colorscheme morning
-    " 删除菜单栏
-    set guioptions-=m
-    " 删除工具栏
-    set guioptions-=T
-    " 显示右侧垂直滚动条
-    set guioptions+=r
-    " 删除左侧水平滚动条
-    set guioptions-=L
-    " 删除底部状态栏
-    set guioptions-=b
-    " 启动时最大化
-    au GUIEnter * simalt ~x
-    " 禁止光标闪烁
-    set guicursor+=a:blinkon0
-    " ctrl+c复制
-    " 其实这里也不用写"+，因为前面已经设置剪切板同步了
-    " `>是为了复制后来到结尾
-    " 哎vim的很多默认设置都很奇怪需要改
-    vnoremap <C-c> "+y`>
-    " ctrl+v粘贴
-    " g表示粘贴后来到结尾
-    nnoremap <C-v> "+gP
-    vnoremap <C-v> "_d"+gP
-    inoremap <C-v> <Esc>"+gpi
-    " ctrl+x剪切
-    vnoremap <C-x> "+d
-    " ctrl+z撤销
-    nnoremap <C-z> u
-    " ctrl+o是代表临时进入普通模式，执行完命令后自动回到插入模式
-    inoremap <C-z> <C-o>u
-    vnoremap <C-z> <Esc>u
-    " ctrl+r重做
-    inoremap <C-r> <C-o><C-r>
-    vnoremap <C-r> <Esc><C-r>
-    " ctrl+a全选
-    nnoremap <C-a> ggVG
-    inoremap <C-a> <Esc>ggVG
-    vnoremap <C-a> <Esc>ggVG
-    " ctrl+s保存
-    nnoremap <C-s> :w<CR>
-    inoremap <C-s> <Esc>:w<CR>a
-    vnoremap <C-s> <Esc>:w<CR>
-    " shift+home到行首
-    nnoremap <S-Home> v^
-    inoremap <S-Home> <Esc>v^
-    vnoremap <S-Home> ^
-    " shift+end到行尾
-    nnoremap <S-End> v$
-    inoremap <S-End> <Esc><Right>v$
-    vnoremap <S-End> $
-    " shift+pageup向上翻页
-    nnoremap <S-PageUp> v10k
-    inoremap <S-PageUp> <Esc>v10k
-    vnoremap <S-PageUp> 10k
-    " shift+pagedown向下翻页
-    nnoremap <S-PageDown> v10j
-    inoremap <S-PageDown> <Esc><Right>v10j
-    vnoremap <S-PageDown> 10j
-    " shift+up向上移动
-    nnoremap <S-Up> vk
-    inoremap <S-Up> <Esc>vk
-    vnoremap <S-Up> k
-    " shift+down向下移动
-    nnoremap <S-Down> vj
-    inoremap <S-Down> <Esc><Right>vj
-    vnoremap <S-Down> j
-    " shift+left向左移动
-    nnoremap <S-Left> vh
-    inoremap <S-Left> <Esc>vh
-    vnoremap <S-Left> h
-    " shift+right向右移动
-    nnoremap <S-Right> vl
-    inoremap <S-Right> <Esc><Right>vl
-    vnoremap <S-Right> l
-    " ctrl+left向左移动一个单词
-    nnoremap <C-Left> b
-    vnoremap <C-Left> b
-    " ctrl+right向右移动一个单词
-    nnoremap <C-Right> w
-    vnoremap <C-Right> w
-    " shif+ctrl+left向左移动一个单词
-    nnoremap <S-C-Left> vb
-    inoremap <S-C-Left> <Esc>vb
-    vnoremap <S-C-Left> b
-    " shif+ctrl+right向右移动一个单词
-    nnoremap <S-C-Right> vw
-    inoremap <S-C-Right> <Esc><Right>vw
-    vnoremap <S-C-Right> w
-    " 退格键删除
-    nnoremap <BS> "_X
-    vnoremap <BS> "_x
-    " 删除键删除而非剪切
-    nnoremap <Del> "_x
-    vnoremap <Del> "_x
-    " 使用ctrl+/toggle注释
-    nnoremap <C-/> V<Plug>NERDCommenterToggle
-    inoremap <C-/> <Esc>V<Plug>NERDCommenterToggle
-    vnoremap <C-/> V<Plug>NERDCommenterToggle
-    " 可视模式下tab和shift+tab缩进和反缩进
-    vnoremap <Tab> >gv
-    vnoremap <S-Tab> <gv
-    " 打开explorer.exe快捷键（其中start是为了实现异步，即不阻塞vim进程，而silent是防止产生“请按enter或其他命令继续”的输出）
-    nnoremap <leader>E :silent !start explorer %:h<CR>
-    " 打开terminal快捷键（但是环境和直接打开powershell有些许不同，原因未知）
-    nnoremap <leader>T :silent !start pwsh -WorkingDirectory %:h -NoExit -Command "$env:LANG='zh_CN.UTF-8'"<CR>
-
-    " 插件相关配置
-    " fzf配置
-    " 禁止fzf的预览（避免中文导致windows下的fzf.vim渲染错误）
-    let g:fzf_preview_window='right:0'
-endif
+" 注释配置
+com! -range OComment <line1>,<line2>Commentary
