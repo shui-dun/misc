@@ -23,4 +23,4 @@
 # [diff]
 # 	tool = vimdiff
 # [difftool "vimdiff"]
-# 	cmd = /d/Vim/vim90/gvim.exe -d "$LOCAL" "$REMOTE"
+# 	cmd = /d/Vim/vim90/vim.exe -d "$LOCAL" "$REMOTE"
