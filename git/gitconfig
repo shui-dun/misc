@@ -15,7 +15,7 @@
 [credential]
 	helper = store
 
-# 代理设置
+# 代理设置（其实不需要设置，因为git bash会读取系统代理设置）
 # [http]
 # 	proxy = http://127.0.0.1:1081
 
