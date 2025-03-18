@@ -18,3 +18,17 @@ SOURCE_LINE="source $CONFIG_FILE"
 if ! grep -q "$SOURCE_LINE" ~/.bashrc; then
     echo "$SOURCE_LINE" >> ~/.bashrc
 fi
+
+# fzf是一个命令行模糊搜索工具，可以用来快速搜索历史命令、文件、进程等
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# zoxide是一个快速跳转工具，类似于autojump
+# 通过z来跳转到最近的目录，zi来进行交互性的选择
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+ZOXIDE_INIT_CMD='eval "$(zoxide init bash)"'
+if ! grep -q "$ZOXIDE_INIT_CMD" ~/.bashrc; then
+    echo "$ZOXIDE_INIT_CMD" >> ~/.bashrc
+fi
+
+# 原本想弄好用的补全&主题，例如ble.sh，但奈何和warp冲突就不弄了
