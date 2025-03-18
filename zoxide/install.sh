@@ -14,7 +14,4 @@ fi
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 # zshrc中添加zoxide的初始化脚本
-echo '# 初始化zoxide
-autoload -Uz compinit
-compinit
-eval "$(zoxide init zsh)"' >> ~/.zshrc
+echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
