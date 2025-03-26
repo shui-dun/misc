@@ -19,7 +19,7 @@ confirm_install() {
     if [ "$INTERACTIVE" = true ]; then
         while true; do
             read -p "是否安装 $component? [Y/n] " response
-            case $response in
+            case ${response:-y} in # 如果变量 response 未定义或为空，则使用默认值y
                 [yY][eE][sS]|[yY]) return 0 ;;
                 [nN][oO]|[nN]) return 1 ;;
                 *) echo "无效输入，请输入 Y 或 n。" ;;
