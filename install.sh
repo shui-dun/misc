@@ -17,11 +17,14 @@ done
 confirm_install() {
     local component=$1
     if [ "$INTERACTIVE" = true ]; then
-        read -p "是否安装 $component? [Y/n] " response
-        case $response in
-            [nN][oO]|[nN]) return 1 ;;
-            *) return 0 ;;
-        esac
+        while true; do
+            read -p "是否安装 $component? [Y/n] " response
+            case $response in
+                [yY][eE][sS]|[yY]) return 0 ;;
+                [nN][oO]|[nN]) return 1 ;;
+                *) echo "无效输入，请输入 Y 或 n。" ;;
+            esac
+        done
     else
         return 0
     fi
