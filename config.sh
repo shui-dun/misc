@@ -2,6 +2,7 @@
 
 # 获取脚本所在绝对路径
 SCRIPT_DIR=$(dirname $0)
+LOG_FILE="$SCRIPT_DIR/error.log"
 
 # 解析命令行参数
 INTERACTIVE=false
@@ -30,11 +31,11 @@ confirm_install() {
 install_component() {
     local component=$1 # 局部变量的作用域仅限于当前函数
     if confirm_install "$component"; then
-        echo ">>>>> START INSTALL $component"
-        bash "$SCRIPT_DIR/$component/install.sh"
-        echo ">>>>> FINISH INSTALL $component"
+        echo ">>>>> START INSTALL $component" | tee -a "$LOG_FILE"
+        bash "$SCRIPT_DIR/$component/install.sh" 2> >(tee -a "$LOG_FILE") # 这是一个进程替代，它将stderr (`2>`)的内容传递给tee命令。tee命令将stderr的内容写入error.log文件并同时输出到控制台。
+        echo ">>>>> FINISH INSTALL $component" | tee -a "$LOG_FILE"
     else
-        echo ">>>>> SKIP INSTALL $component"
+        echo ">>>>> SKIP INSTALL $component" | tee -a "$LOG_FILE"
     fi
 }
 
@@ -59,4 +60,4 @@ for dir in "$SCRIPT_DIR"/*/ ; do
     fi
 done
 
-echo ">>>>> FINISH INSTALL ALL COMPONENTS"
+echo ">>>>> FINISH INSTALL ALL COMPONENTS" | tee -a "$LOG_FILE"

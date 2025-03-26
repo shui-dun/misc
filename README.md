@@ -11,11 +11,11 @@
 ### 执行脚本
 
 ```sh
-bash config.sh 2> >(tee -a error.log)
+bash config.sh
 ```
 
 注意：
 
 - 加上 `-i` 参数会在执行过程中询问是否安装某个软件
 - 执行上述脚本时不要加sudo，因为有些命令加了sudo无法正常运行，例如`chsh -s /bin/zsh`
-- `>(tee -a error.log)` 是一个进程替代，它将stderr (`2>`)的内容传递给tee命令。tee命令将stderr的内容写入error.log文件并同时输出到控制台。
+- 错误信息会自动记录到 `error.log` 文件中，同时在控制台显示
