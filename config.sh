@@ -3,12 +3,39 @@
 # 获取脚本所在绝对路径
 SCRIPT_DIR=$(dirname $0)
 
+# 解析命令行参数
+INTERACTIVE=false
+while getopts "i" opt; do
+    case $opt in
+        i) INTERACTIVE=true ;;
+        *) ;;
+    esac
+done
+
+# 交互式确认函数
+confirm_install() {
+    local component=$1
+    if [ "$INTERACTIVE" = true ]; then
+        read -p "是否安装 $component? [Y/n] " response
+        case $response in
+            [nN][oO]|[nN]) return 1 ;;
+            *) return 0 ;;
+        esac
+    else
+        return 0
+    fi
+}
+
 # 安装组件
 install_component() {
     local component=$1 # 局部变量的作用域仅限于当前函数
-    echo ">>>>> START INSTALL $component"
-    bash "$SCRIPT_DIR/$component/install.sh"
-    echo ">>>>> FINISH INSTALL $component"
+    if confirm_install "$component"; then
+        echo ">>>>> START INSTALL $component"
+        bash "$SCRIPT_DIR/$component/install.sh"
+        echo ">>>>> FINISH INSTALL $component"
+    else
+        echo ">>>>> SKIP INSTALL $component"
+    fi
 }
 
 # 优先安装的组件
