@@ -31,4 +31,7 @@ if ! grep -q "$ZOXIDE_INIT_CMD" ~/.bashrc; then
     echo "$ZOXIDE_INIT_CMD" >> ~/.bashrc
 fi
 
+# 安装 ranger，一个好用的文件管理器
+sudo apt install -y ranger
+
 # 原本想弄好用的补全&主题，例如ble.sh，但奈何和warp冲突就不弄了
