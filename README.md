@@ -11,7 +11,7 @@
 ### 执行脚本
 
 ```sh
-bash config.sh
+bash install.sh
 ```
 
 注意：

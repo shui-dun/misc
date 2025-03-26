@@ -21,7 +21,7 @@ fi
 
 # fzf是一个命令行模糊搜索工具，可以用来快速搜索历史命令、文件、进程等
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --all
 
 # zoxide是一个快速跳转工具，类似于autojump
 # 通过z来跳转到最近的目录，zi来进行交互性的选择
