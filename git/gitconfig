@@ -14,7 +14,9 @@
 	encoding = utf-8
 [credential]
 	helper = store
-
+[safe]
+	# 避免仓库所有者不是当前用户时提交失败
+	directory = *
 # 代理设置
 # [http]
 # 	proxy = http://127.0.0.1:1081
