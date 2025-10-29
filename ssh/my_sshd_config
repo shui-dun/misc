@@ -3,7 +3,7 @@
 ###############################
 Port 1773 
 PermitRootLogin yes 
-PasswordAuthentication yes 
+PasswordAuthentication no 
 ###############################
 
 
